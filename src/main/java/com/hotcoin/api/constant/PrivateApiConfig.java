@@ -18,12 +18,12 @@ public interface PrivateApiConfig {
      * AccessKeyId
      * 申请的API Key中的 Access Key
      */
-    String ACCESS_KEY = "您的Access Key";
+    String ACCESS_KEY = "2da0511c0c404451b04d32c4e27c65f0";
 
     /**
      * Secret Key
      * 申请的API Key中的 Secret Key
      */
-    String SECRET_KEY = "您的Secret Key";
+    String SECRET_KEY = "2D4F999A40EB41663BA6298A21C8FFE5";
 
 }

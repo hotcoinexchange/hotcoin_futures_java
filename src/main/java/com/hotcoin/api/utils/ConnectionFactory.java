@@ -46,7 +46,7 @@ public class ConnectionFactory {
     private static final OkHttpClient client = new OkHttpClient.Builder()
             .followSslRedirects(Boolean.FALSE)
             .followRedirects(Boolean.FALSE)
-//            .proxy(PROXY) // 代理
+            .proxy(PROXY)
             .connectTimeout(connectTimeout, TimeUnit.MILLISECONDS)
             .readTimeout(readTimeout, TimeUnit.MILLISECONDS)
             .writeTimeout(writeTimeout, TimeUnit.MILLISECONDS)

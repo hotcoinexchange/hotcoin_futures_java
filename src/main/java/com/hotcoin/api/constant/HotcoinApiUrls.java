@@ -14,7 +14,7 @@ public interface HotcoinApiUrls {
      * spot rest api url
      * 现货Rest Api域名地址
      */
-    String SPOT_REST_URL = "https://api-ct.hotcoin.fit";
+    String SPOT_REST_URL = "https://hkdevapi.hotcx.com";
 
     /**
      * spot websocket api url
