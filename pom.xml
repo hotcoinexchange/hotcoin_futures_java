@@ -73,7 +73,11 @@
             <artifactId>commons-codec</artifactId>
             <version>1.15</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.jodd</groupId>
+            <artifactId>jodd-http</artifactId>
+            <version>6.2.0</version>
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
