@@ -12,18 +12,18 @@ package com.hotcoin.api.constant;
  * @version : 1.0.0
  * @date: 2022/3/26 11:25
  */
-public interface PrivateApiConfig {
+public class PrivateApiConfig {
 
     /**
      * AccessKeyId
      * 申请的API Key中的 Access Key
      */
-    String ACCESS_KEY = "2da0511c0c404451b04d32c4e27c65f0";
+    public static String ACCESS_KEY = "77827653e2b347fab36bfa69f2893dfb";
 
     /**
      * Secret Key
      * 申请的API Key中的 Secret Key
      */
-    String SECRET_KEY = "2D4F999A40EB41663BA6298A21C8FFE5";
+    public static String SECRET_KEY = "058B4DECEFEF68EA59BBF132617627B2";
 
 }

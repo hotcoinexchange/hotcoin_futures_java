@@ -13,12 +13,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 深度
  * @author zenghaihui
  * @date 2024/4/10
  */
 public class DepthExample {
     /** 访问地址 */
-    static String url ="ws://test-perpetual-wss.hotcx.com";
+    static String url ="wss://test-perpetual-wss.hotcx.com";
 //    static String url ="ws://127.0.0.1:8104";
 
     /**
@@ -46,7 +47,7 @@ public class DepthExample {
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-        WebSocketUtil.longConnect(url,paramsGenerate());
+        WebSocketUtil.webConnect(url,paramsGenerate(),false,true);
     }
 
 //    send message: {"event":"subscribe","params":{"serialize":false,"biz":"perpetual","granularity":"1","type":"depth","contractCode":"LTCUSDT"}}

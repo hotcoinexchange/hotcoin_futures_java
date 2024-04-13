@@ -14,12 +14,13 @@ import java.util.Map;
 
 /**
  * 单个行情
+ *
  * @author zenghaihui
  * @date 2024/4/10
  */
 public class TickerExample {
     /** 访问地址 */
-        static String url ="ws://test-perpetual-wss.hotcx.com";
+        static String url ="wss://test-perpetual-wss.hotcx.com";
 //    static String url ="ws://127.0.0.1:8104";
 
     /**
@@ -45,7 +46,7 @@ public class TickerExample {
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-        WebSocketUtil.longConnect(url,paramsGenerate());
+        WebSocketUtil.webConnect(url,paramsGenerate(),false,true);
     }
 
 //    send message: {"event":"subscribe","params":{"serialize":false,"biz":"perpetual","type":"ticker","contractCode":"btcusdt"}}

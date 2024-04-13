@@ -1,11 +1,16 @@
 package com.hotcoin.api.utils;
 
+import com.alibaba.fastjson.JSON;
 import com.hotcoin.api.clint.HotcoinWebSocketClient;
+import com.hotcoin.api.constant.PrivateApiConfig;
+import lombok.SneakyThrows;
 import org.java_websocket.handshake.ServerHandshake;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -23,58 +28,46 @@ public class WebSocketUtil {
     private static final int HEARTBEAT_INTERVAL = 30;
 
     /**
-     * 闪断连接（只请求一次就断开）
-     * @param url
-     * @param params
+     * web连接
+     * @param url 连接地址
+     * @param params json入参
+     * @param loginIn 是否登陆
+     * @param shortConnect 是否闪断
      */
-    public static void fastConnect(String url, String params){
+    public static void webConnect(String url, String params,boolean loginIn, boolean shortConnect){
         try {
             URI uri = new URI(url);
             HotcoinWebSocketClient client = new HotcoinWebSocketClient(uri){
+                @SneakyThrows
                 @Override
-                public void onOpen(ServerHandshake handshakedata) {
+                public void onOpen(ServerHandshake handShakeData) {
                     System.out.println("Connected to server");
-                    System.out.println("send message: " + params);
-                    send(params);
+                    if(loginIn){
+                        System.out.println("login message: " + loginGenerate());
+                        send(loginGenerate());
+                    }
+
+                    ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
+                    Runnable task = () -> {
+                        if(null != params){
+                            System.out.println("send message: " + params);
+                            send(params);
+                        }
+                    };
+                    executorService.schedule(task, 3, TimeUnit.SECONDS);
+
                 }
             };
             client.connect();
-            client.close();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    //todo 短暂连接（5分钟后停止）
-    public static void shortConnect(String url, String params){
-        stopHeartbeat();
-    }
-
-    /**
-     * 长期连接
-     * @param url
-     * @param params
-     */
-    public static void longConnect(String url, String params){
-        try {
-            URI uri = new URI(url);
-            HotcoinWebSocketClient client = new HotcoinWebSocketClient(uri){
-                @Override
-                public void onOpen(ServerHandshake handshakedata) {
-                    System.out.println("Long Connected to server");
-                    System.out.println("send message: " + params);
-                    send(params);
-                }
-            };
-            client.connect();
+            if(shortConnect) {
+                client.close();
+                return;
+            }
             startHeartbeat(client);
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-
     }
-
 
     /**
      * 定时任务调用心跳
@@ -99,7 +92,6 @@ public class WebSocketUtil {
         try {
             client.send("{ \"event\": \"ping\"}");
         } catch (Exception e) {
-            // Handle exception, e.g., reconnect or shutdown
             e.printStackTrace();
         }
     }
@@ -108,7 +100,26 @@ public class WebSocketUtil {
      * 关闭心跳
      */
     public static void stopHeartbeat() {
-        // 关闭ScheduledExecutorService，这将停止所有正在执行和等待执行的任务
         scheduler.shutdown();
+    }
+
+    /**
+     * 请求参数制造方法
+     * @return
+     */
+    static String loginGenerate(){
+        long time = System.currentTimeMillis();
+        Map<String,Object> pushMsg = new LinkedHashMap<>();
+        /** 请求类型 */
+        pushMsg.put("event","signin");
+        Map<String,Object> params = new LinkedHashMap<>();
+        /** 访问key */
+        params.put("apiKey", PrivateApiConfig.ACCESS_KEY);
+        /** 签名 */
+        params.put("signature", SignatureGenerator.createWebSocketSignature(time));
+        /** timestamp */
+        params.put("timestamp",time);
+        pushMsg.put("params",params);
+        return JSON.toJSONString(pushMsg);
     }
 }

@@ -8,12 +8,18 @@ import org.apache.commons.lang3.StringUtils;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 /**
  * Signature Generator
@@ -88,6 +94,55 @@ public class SignatureGenerator {
      */
     private static String gmtUTCTime() {
         return Instant.now().atZone(ZONE_GMT).format(DT_FORMAT);
+    }
+
+    /**
+     * 生成websocket的签名
+     * @return
+     */
+    public static String createWebSocketSignature(long time){
+        try {
+            APIConfiguration config= new APIConfiguration();
+
+            String host = "api.ws.contract.hotcoin.top";
+            String method = "WSS";
+
+            //基于每个元组的第一个元素排序
+            SortedMap<String, String> sortedParams = new TreeMap<>();
+            sortedParams.put("AccessKeyId",config.getAccessKey());
+            sortedParams.put("SignatureMethod","HmacSHA256");
+            sortedParams.put("SignatureVersion","2");
+            sortedParams.put("Timestamp",Long.toString(time));
+
+            // 排序后的键值对列表转换为URL编码的字符串
+            StringBuilder tempParams = new StringBuilder();
+            for (Map.Entry<String, String> entry : sortedParams.entrySet()) {
+                if (tempParams.length() > 0) {
+                    tempParams.append("&");
+                }
+                tempParams.append(
+                        URLEncoder.encode(entry.getKey(), StandardCharsets.UTF_8.toString()));
+                tempParams.append("=");
+                tempParams.append(URLEncoder.encode(entry.getValue(), StandardCharsets.UTF_8.toString()));
+            }
+
+            //拼接字符串
+            String payload = method + "\n" + host + "\n/" + "wss" + "\n" + tempParams.toString();
+            SecretKeySpec secKey = new SecretKeySpec(config.getSecretKey().getBytes(StandardCharsets.UTF_8), HMACSHA_256);
+            Mac mac = Mac.getInstance(HMACSHA_256);
+            mac.init(secKey);
+            byte[] hmacSha256 = mac.doFinal(payload.getBytes(StandardCharsets.UTF_8));
+            return Base64.encodeBase64String(hmacSha256).replace(ApiConstants.LINE_BREAK, ApiConstants.EMPTY);
+        } catch (NoSuchAlgorithmException e) {
+            throw new HotcoinApiException(HotcoinApiException.RUNTIME_ERROR,
+                    "[Signature] No such algorithm: " + e.getMessage());
+        } catch (InvalidKeyException e) {
+            throw new HotcoinApiException(HotcoinApiException.RUNTIME_ERROR,
+                    "[Signature] Invalid key: " + e.getMessage());
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

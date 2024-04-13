@@ -20,7 +20,7 @@ import java.util.Map;
  */
 public class TickersExample {
     /** 访问地址 */
-    static String url ="ws://test-perpetual-wss.hotcx.com";
+    static String url ="wss://test-perpetual-wss.hotcx.com";
 
     /**
      * 请求参数制造方法
@@ -43,7 +43,7 @@ public class TickersExample {
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-        WebSocketUtil.longConnect(url,paramsGenerate());
+        WebSocketUtil.webConnect(url,paramsGenerate(),false,true);
     }
 //    send message: {"event":"subscribe","params":{"serialize":false,"biz":"perpetual","type":"tickers"}}
 //    Received message: {"biz":"perpetual","data":{"result":true},"channel":"subscribe","type":"tickers","env":0}

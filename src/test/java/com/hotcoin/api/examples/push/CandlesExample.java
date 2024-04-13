@@ -14,7 +14,7 @@ import com.hotcoin.api.utils.WebSocketUtil;
  */
 public class CandlesExample {
     /** 访问地址 */
-    static String url ="ws://test-perpetual-wss.hotcx.com";
+    static String url ="wss://test-perpetual-wss.hotcx.com";
 
 //    static String url ="ws://127.0.0.1:8104";
     /**
@@ -42,7 +42,7 @@ public class CandlesExample {
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-        WebSocketUtil.longConnect(url,paramsGenerate());
+        WebSocketUtil.webConnect(url,paramsGenerate(),false,true);
     }
 //    send message: {"event":"subscribe","params":{"serialize":false,"biz":"perpetual","granularity":"1min","type":"candles","contractCode":"BTCUSDT"}}
 //    Received message: {"biz":"perpetual","data":{"result":true},"granularity":"1min","channel":"subscribe","type":"candles","env":0,"contractCode":"BTCUSDT"}
