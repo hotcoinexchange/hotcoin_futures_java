@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class FundRateExample {
     /** 访问地址 */
-    static String url ="wss://test-perpetual-wss.hotcx.com";
+    static String url ="wss://wss-ct.hotcoin.fit";
 
     /**
      * 请求参数制造方法
@@ -45,11 +45,5 @@ public class FundRateExample {
         /** 调用远程WebSocket */
         WebSocketUtil.webConnect(url,paramsGenerate(),true,true);
     }
-
-//    send message: {"event":"subscribe","params":{"serialize":false,"biz":"perpetual","type":"fund_rate","contractCode":"btcusdt"}}
-//    Received message: {"biz":"perpetual","data":{"result":true},"channel":"subscribe","type":"fund_rate","env":0,"contractCode":"btcusdt"}
-//    Received message: {"biz":"perpetual","data":["btcusdt","67594.61","67592.90","0.0001","0.0001",7294622,"24054","436785.31","436796.42",0,"usdt","btc","usdt","USDT","BTC","USDT","0"],"type":"fund_rate","env":0,"contractCode":"btcusdt","timestamp":1713016705540}
-//    Received message: {"biz":"perpetual","data":["btcusdt","67591.71","67590.00","0.0001","0.0001",7291604,"24054","436766.58","436777.68",0,"usdt","btc","usdt","USDT","BTC","USDT","0"],"type":"fund_rate","env":0,"contractCode":"btcusdt","timestamp":1713016708398}
-//    Received message: {"biz":"perpetual","data":["btcusdt","67563.71","67562.00","0.0001","0.0001",7288555,"24054","436585.64","436596.74",0,"usdt","btc","usdt","USDT","BTC","USDT","0"],"type":"fund_rate","env":0,"contractCode":"btcusdt","timestamp":1713016711480}
 
 }

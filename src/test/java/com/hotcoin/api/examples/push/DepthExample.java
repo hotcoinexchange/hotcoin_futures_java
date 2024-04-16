@@ -19,8 +19,7 @@ import java.util.Map;
  */
 public class DepthExample {
     /** 访问地址 */
-    static String url ="wss://test-perpetual-wss.hotcx.com";
-//    static String url ="ws://127.0.0.1:8104";
+    static String url ="wss://wss-ct.hotcoin.fit";
 
     /**
      * 请求参数制造方法
@@ -49,9 +48,5 @@ public class DepthExample {
         /** 调用远程WebSocket */
         WebSocketUtil.webConnect(url,paramsGenerate(),false,true);
     }
-
-//    send message: {"event":"subscribe","params":{"serialize":false,"biz":"perpetual","granularity":"1","type":"depth","contractCode":"LTCUSDT"}}
-//    Received message: {"biz":"perpetual","data":{"result":true},"granularity":"1","channel":"subscribe","type":"depth","env":0,"contractCode":"LTCUSDT"}
-//    Received message: {"biz":"perpetual","data":{"asks":[["250.00000","94","94"]],"bids":[["216.01000","5319","5319"]]},"granularity":"1","type":"depth","env":0,"contractCode":"LTCUSDT","timestamp":1712798513490}
 
 }

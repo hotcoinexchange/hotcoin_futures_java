@@ -20,8 +20,7 @@ import java.util.Map;
  */
 public class FillsExample {
     /** 访问地址 */
-    static String url ="wss://test-perpetual-wss.hotcx.com";
-//    static String url ="ws://127.0.0.1:8104";
+    static String url ="wss://wss-ct.hotcoin.fit";
 
     /**
      * 请求参数制造方法
@@ -48,11 +47,4 @@ public class FillsExample {
         /** 调用远程WebSocket */
         WebSocketUtil.webConnect(url,paramsGenerate(),false,true);
     }
-
-
-//    send message: {"event":"subscribe","params":{"serialize":false,"biz":"perpetual","type":"fills","contractCode":"BTCUSDT"}}
-//    Received message: {"biz":"perpetual","data":{"result":true},"channel":"subscribe","type":"fills","env":0,"contractCode":"BTCUSDT"}
-//    Received message: {"biz":"perpetual","data":[],"type":"fills","env":0,"contractCode":"BTCUSDT","timestamp":1712802153103}
-//    Received message: {"biz":"perpetual","data":[["70495.35","7","short",1712814248494,0]],"type":"fills","env":0,"contractCode":"btcusdt","timestamp":1712814248502}
-//    Received message: {"biz":"perpetual","data":[["70495.35","33","short",1712814248594,0],["70495.35","15","short",1712814248594,0]],"type":"fills","env":0,"contractCode":"btcusdt","timestamp":1712814248602}
 }

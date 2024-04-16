@@ -76,11 +76,6 @@ public class WebSocketUtil {
     public static void startHeartbeat(HotcoinWebSocketClient client) {
         // 创建一个Runnable任务来发送心跳
         Runnable heartbeatTask = () -> sendHeartbeat(client);
-
-        // 使用ScheduledExecutorService安排任务进行重复执行
-        // initialDelay表示任务开始之前的延迟
-        // period表示任务执行的间隔时间
-        // unit表示时间单位
         scheduler.scheduleAtFixedRate(heartbeatTask, HEARTBEAT_INTERVAL, HEARTBEAT_INTERVAL, TimeUnit.SECONDS);
     }
 

@@ -20,7 +20,7 @@ import java.util.Map;
  */
 public class TickersExample {
     /** 访问地址 */
-    static String url ="wss://test-perpetual-wss.hotcx.com";
+    static String url ="wss://wss-ct.hotcoin.fit";
 
     /**
      * 请求参数制造方法
@@ -45,10 +45,4 @@ public class TickersExample {
         /** 调用远程WebSocket */
         WebSocketUtil.webConnect(url,paramsGenerate(),false,true);
     }
-//    send message: {"event":"subscribe","params":{"serialize":false,"biz":"perpetual","type":"tickers"}}
-//    Received message: {"biz":"perpetual","data":{"result":true},"channel":"subscribe","type":"tickers","env":0}
-//    Received message: {"biz":"perpetual","data":[[1712762705687,"99999.00","60000.00","15179004","1048002762","69191.55","68444.85","-746","-0.3","68444.39","68445.31","btcusdt","491432.98",0]],"type":"tickers","env":0,"timestamp":1712762707373}
-//    Received message: {"biz":"perpetual","data":[[1712762705687,"99999.00","60000.00","15179004","1048002762","69191.55","68437.99","-746","-0.31","68444.39","68445.31","btcusdt","491383.72",0]],"type":"tickers","env":0,"timestamp":1712762710377}
-//    Received message: {"biz":"perpetual","data":[[1712762710742,"99999.00","60000.00","15179438","1048032467","69191.55","68437.68","-753","-0.31","39500","0","btcusdt","491381.50",0]],"type":"tickers","env":0,"timestamp":1712762713404}
-
 }

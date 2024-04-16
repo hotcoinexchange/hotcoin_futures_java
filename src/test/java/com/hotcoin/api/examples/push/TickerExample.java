@@ -20,8 +20,7 @@ import java.util.Map;
  */
 public class TickerExample {
     /** 访问地址 */
-        static String url ="wss://test-perpetual-wss.hotcx.com";
-//    static String url ="ws://127.0.0.1:8104";
+        static String url ="wss://wss-ct.hotcoin.fit";
 
     /**
      * 请求参数制造方法
@@ -48,10 +47,5 @@ public class TickerExample {
         /** 调用远程WebSocket */
         WebSocketUtil.webConnect(url,paramsGenerate(),false,true);
     }
-
-//    send message: {"event":"subscribe","params":{"serialize":false,"biz":"perpetual","type":"ticker","contractCode":"btcusdt"}}
-//    Received message: {"biz":"perpetual","data":{"result":true},"channel":"subscribe","type":"ticker","env":0,"contractCode":"btcusdt"}
-//    Received message: {"biz":"perpetual","data":[[1712800975802,"99999.00","60000.00","15021528","1042275165","69539.35","70615.76","1065","1.55","70598.22","70607.15","btcusdt","508041.27",0]],"type":"ticker","env":0,"contractCode":"btcusdt","timestamp":1712800977406}
-//    Received message: {"biz":"perpetual","data":[[1712800975802,"99999.00","60000.00","15021528","1042275165","69539.35","70615.76","1065","1.55","70598.22","70607.15","btcusdt","508041.27",0]],"type":"ticker","env":0,"contractCode":"btcusdt","timestamp":1712800977908}
 
 }

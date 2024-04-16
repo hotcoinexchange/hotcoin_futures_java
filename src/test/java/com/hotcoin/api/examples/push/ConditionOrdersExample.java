@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class ConditionOrdersExample {
     /** 访问地址 */
-    static String url ="wss://test-perpetual-wss.hotcx.com";
+    static String url ="wss://wss-ct.hotcoin.fit";
 
     /**
      * 请求参数制造方法
@@ -30,8 +30,6 @@ public class ConditionOrdersExample {
         params.put("biz","perpetual");
         /** 条件订单 */
         params.put("type","condition_orders");
-        /** 模拟交易 */
-        params.put("env",1);
         /** 是否序列化 */
         params.put("serialize",false);
         pushMsg.put("params",params);

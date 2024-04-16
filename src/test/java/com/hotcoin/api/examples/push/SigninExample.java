@@ -18,7 +18,7 @@ import com.hotcoin.api.utils.WebSocketUtil;
  */
 public class SigninExample {
     /** 访问地址 */
-    static String url ="wss://test-perpetual-wss.hotcx.com";
+    static String url ="wss://wss-ct.hotcoin.fit";
 
 
     public static void main(String[] args) {
@@ -28,7 +28,4 @@ public class SigninExample {
         /** 调用远程WebSocket */
         WebSocketUtil.webConnect(url,null,true,true);
     }
-
-//    send message: {"event":"signin","params":{"apiKey":"77827653e2b347fab36bfa69f2893dfb","signature":"JUtlJ7tlpwsZN1ZXZ94sTqEIOoX4N9gudJgUjJpnx/c=","timestamp":1712979624902}}
-//    Received message: {"data":{"result":true},"channel":"signin"}
 }
