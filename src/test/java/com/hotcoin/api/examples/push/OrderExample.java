@@ -1,6 +1,7 @@
 package com.hotcoin.api.examples.push;
 
 import com.alibaba.fastjson.JSON;
+import com.hotcoin.api.constant.PrivateApiConfig;
 import com.hotcoin.api.utils.WebSocketUtil;
 
 import java.util.HashMap;
@@ -38,6 +39,9 @@ public class OrderExample {
     }
 
     public static void main(String[] args) {
+        /** 秘钥 */
+        PrivateApiConfig.ACCESS_KEY="77827653e2b347fab36bfa69f2893dfb";
+        PrivateApiConfig.SECRET_KEY="058B4DECEFEF68EA59BBF132617627B2";
         /** 调用远程WebSocket */
         WebSocketUtil.webConnect(url,paramsGenerate(),true,true);
     }

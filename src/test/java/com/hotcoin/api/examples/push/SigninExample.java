@@ -20,17 +20,11 @@ public class SigninExample {
     /** 访问地址 */
     static String url ="wss://test-perpetual-wss.hotcx.com";
 
-    /**
-     * 请求参数制造方法
-     * @return
-     */
-    static void paramsGenerate(){
-        PrivateApiConfig.ACCESS_KEY="77827653e2b347fab36bfa69f2893dfb";
-        PrivateApiConfig.SECRET_KEY="058B4DECEFEF68EA59BBF132617627B2";
-    }
 
     public static void main(String[] args) {
-        paramsGenerate();
+        /** 秘钥 */
+        PrivateApiConfig.ACCESS_KEY="77827653e2b347fab36bfa69f2893dfb";
+        PrivateApiConfig.SECRET_KEY="058B4DECEFEF68EA59BBF132617627B2";
         /** 调用远程WebSocket */
         WebSocketUtil.webConnect(url,null,true,true);
     }
