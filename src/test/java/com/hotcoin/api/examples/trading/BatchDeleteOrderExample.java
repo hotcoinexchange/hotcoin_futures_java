@@ -17,7 +17,7 @@ public class BatchDeleteOrderExample {
     /**
      * 请求url模版
      */
-    static String uriTemplate = "/api/v1/perpetual/products/{0}/order";
+    static String uriTemplate = "/api/v1/perpetual/products/{0}/orders";
 
     public static void main(String[] args) {
 
