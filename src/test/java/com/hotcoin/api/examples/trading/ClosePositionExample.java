@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 市价全平
+ * 市价全平D
  *
  * @author zenghaihui
  * @date 2024/4/16
@@ -25,7 +25,7 @@ public class ClosePositionExample {
 
         /** 路径参数：合约code,方向(long 多仓 short 空仓) */
         String uri = MessageFormat.format(uriTemplate, "BTCUSDT", "long");
-        String result = HttpUtil.post(GlobalConfigEnum.HUGH, uri, pathParam, null);
+        String result = HttpUtil.post(GlobalConfigEnum.HUGH, uri, pathParam, new HashMap<>());
         System.out.println(result);
     }
 }

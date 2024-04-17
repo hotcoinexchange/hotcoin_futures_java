@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 订单交易详情
+ * 订单交易详情D
  *
  * @author zenghaihui
  * @date 2024/4/16
@@ -23,7 +23,7 @@ public class OrderDealDetailExample {
     public static void main(String[] args) {
         Map<String, String> pathParam = new HashMap<>();
         /** 订单ID */
-        pathParam.put("orderId", "11");
+        pathParam.put("orderId", "3253898960830720");
 
         /** 路径参数：合约code */
         String uri = MessageFormat.format(uriTemplate, "BTCUSDT");

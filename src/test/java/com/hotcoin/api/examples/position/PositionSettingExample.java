@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 设置自动追加保证金
+ * 设置自动追加保证金D
  *
  * @author zenghaihui
  * @date 2024/4/16
@@ -21,11 +21,11 @@ public class PositionSettingExample {
     static String uriTemplate = "/api/v1/perpetual/position/{0}/setting";
 
     public static void main(String[] args) {
-        Map<String, String> pathParam = new HashMap<>();
-        pathParam.put("value", "1");
+        Map<String, String> bodyParam = new HashMap<>();
+        bodyParam.put("value", "1");
         /** 路径参数：合约code */
         String uri = MessageFormat.format(uriTemplate, "BTCUSDT");
-        String result = HttpUtil.get(GlobalConfigEnum.HUGH, uri, pathParam);
+        String result = HttpUtil.post(GlobalConfigEnum.HUGH, uri, bodyParam, bodyParam);
         System.out.println(result);
     }
 }

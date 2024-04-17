@@ -1,5 +1,8 @@
 package com.hotcoin.api.examples.trading;
 
+import com.hotcoin.swap_api.enums.GlobalConfigEnum;
+import com.hotcoin.swap_api.util.HttpUtil;
+
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 批量下单
+ * 批量下单D
  *
  * @author zenghaihui
  * @date 2024/4/16
@@ -57,7 +60,7 @@ public class BatchOrderExample {
 
         /** 路径参数：合约code */
         String uri = MessageFormat.format(uriTemplate, "BTCUSDT");
-        //        String result = HttpUtil.post(GlobalConfigEnum.HUGH, uri, pathParam);
-        //        System.out.println(result);
+        String result = HttpUtil.post(GlobalConfigEnum.HUGH, uri, new HashMap(), pathParam);
+        System.out.println(result);
     }
 }

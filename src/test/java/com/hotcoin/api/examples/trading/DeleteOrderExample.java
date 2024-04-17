@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 撤单
+ * 撤单D
  *
  * @author zenghaihui
  * @date 2024/4/16
@@ -24,8 +24,8 @@ public class DeleteOrderExample {
         Map<String, String> pathParam = new HashMap<>();
 
         /** 路径参数：合约code,订单id */
-        String uri = MessageFormat.format(uriTemplate, "1");
-        String result = HttpUtil.del(GlobalConfigEnum.HUGH, uri, pathParam);
+        String uri = MessageFormat.format(uriTemplate, "BTCUSDT", "3253898960830720");
+        String result = HttpUtil.del(GlobalConfigEnum.HUGH, uri, pathParam, new HashMap<>());
         System.out.println(result);
     }
 }

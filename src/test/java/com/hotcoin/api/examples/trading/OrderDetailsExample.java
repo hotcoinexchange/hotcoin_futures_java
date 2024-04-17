@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 订单详情
+ * 订单详情D
  *
  * @author zenghaihui
  * @date 2024/4/16
@@ -24,7 +24,7 @@ public class OrderDetailsExample {
         Map<String, String> pathParam = new HashMap<>();
 
         /** 路径参数：合约code,订单id */
-        String uri = MessageFormat.format(uriTemplate, "BTCUSDT", "1");
+        String uri = MessageFormat.format(uriTemplate, "BTCUSDT", "3253898960830720");
         String result = HttpUtil.get(GlobalConfigEnum.HUGH, uri, pathParam);
         System.out.println(result);
     }

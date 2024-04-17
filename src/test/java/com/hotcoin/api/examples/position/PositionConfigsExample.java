@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 仓位和限额设置
+ * 仓位和限额设置D
  *
  * @author zenghaihui
  * @date 2024/4/16
@@ -18,7 +18,7 @@ public class PositionConfigsExample {
     /**
      * 请求url模版
      */
-    static String uriTemplate = "/api/v1/perpetual/{0}/configs";
+    static String uriTemplate = "/api/v1/perpetual/position/{0}/configs";
 
     public static void main(String[] args) {
         Map<String, String> pathParam = new HashMap<>();

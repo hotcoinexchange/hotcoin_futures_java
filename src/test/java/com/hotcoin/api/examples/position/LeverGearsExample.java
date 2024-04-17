@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 获取所有档位对应的保证金率和杠杆
+ * 获取所有档位对应的保证金率和杠杆D
  *
  * @author zenghaihui
  * @date 2024/4/16

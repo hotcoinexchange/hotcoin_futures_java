@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 成交记录
+ * 成交记录D
  *
  * @author zenghaihui
  * @date 2024/4/16
@@ -17,14 +17,14 @@ public class DealRecordExample {
     /**
      * 请求url模版
      */
-    static String uriTemplate = "/api/v1/perpetual/account/deal-record";
+    static String uriTemplate = "/api/v1/perpetual/bills/deal-record";
 
     public static void main(String[] args) {
         Map<String, String> pathParam = new HashMap<>();
         /** 开始时间 */
-        pathParam.put("startDate", "2024-02-16 00:00:00");
+        pathParam.put("startDate", "1712734214561");
         /** 结束时间 */
-        pathParam.put("endDate", "2024-04-15 13:53:49");
+        pathParam.put("endDate", "1713339014561");
         /** 合约code	 */
         pathParam.put("contractCode", "btcusdt");
         /** 页数 */
