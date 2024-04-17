@@ -17,8 +17,20 @@ public class DealRecordExample {
 
     public static void main(String[] args) {
         Map<String, String> pathParam = new HashMap<>();
-        pathParam.put("startDate","2024-02-16 00:00:00");
-        pathParam.put("endDate","2024-04-15 13:53:49");
+        /** 开始时间 */
+        pathParam.put("startDate", "2024-02-16 00:00:00");
+        /** 结束时间 */
+        pathParam.put("endDate", "2024-04-15 13:53:49");
+        /** 合约code	 */
+        pathParam.put("contractCode", "btcusdt");
+        /** 页数 */
+        pathParam.put("page", "1");
+        /** 每页数量 */
+        pathParam.put("pageSize", "20");
+        /** 开始id */
+        pathParam.put("startId", "1");
+        /** 结束id */
+        pathParam.put("endId", "10000000");
         String uri = "/api/v1/perpetual/account/deal-record";
         String result = HttpUtil.get(GlobalConfigEnum.HUGH, uri, pathParam);
         System.out.println(result);

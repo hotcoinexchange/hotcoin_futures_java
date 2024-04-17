@@ -17,13 +17,10 @@ public class BatchDeleteOrderByIdExample {
 
     public static void main(String[] args) {
         Map<String, String> pathParam = new HashMap<>();
-        pathParam.put("type","11");
-        pathParam.put("side","open_long");
-        pathParam.put("price","11");
-        pathParam.put("amount","1");
-        pathParam.put("beMaker",String.valueOf(System.currentTimeMillis()));
+        /** 订单号 */
+        pathParam.put("id", "[80581909355536,80581909355537]");
 
-        String uri = "/api/v1/perpetual/products/BTCUSDT/order";
+        String uri = "/api/v1/perpetual/products/BTCUSDT/batch-delete-order";
         String result = HttpUtil.get(GlobalConfigEnum.HUGH, uri, pathParam);
         System.out.println(result);
     }

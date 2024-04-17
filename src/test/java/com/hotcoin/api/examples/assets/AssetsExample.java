@@ -1,6 +1,5 @@
 package com.hotcoin.api.examples.assets;
 
-import com.hotcoin.api.constant.PrivateApiConfig;
 import com.hotcoin.swap_api.enums.GlobalConfigEnum;
 import com.hotcoin.swap_api.util.HttpUtil;
 

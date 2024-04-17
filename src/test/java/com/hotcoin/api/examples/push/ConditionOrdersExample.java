@@ -14,33 +14,34 @@ import java.util.Map;
  * @date 2024/4/12
  */
 public class ConditionOrdersExample {
-    /** 访问地址 */
-    static String url ="wss://wss-ct.hotcoin.fit";
+    /**
+     * 访问地址
+     */
+    static String url = "wss://wss-ct.hotcoin.fit";
 
     /**
      * 请求参数制造方法
-     * @return
      */
-    static String paramsGenerate(){
-        Map<String,Object> pushMsg = new HashMap<>();
+    static String paramsGenerate() {
+        Map<String, Object> pushMsg = new HashMap<>();
         /** 请求类型 */
-        pushMsg.put("event","subscribe");
-        Map<String,Object> params = new HashMap<>();
+        pushMsg.put("event", "subscribe");
+        Map<String, Object> params = new HashMap<>();
         /** 业务类型 */
-        params.put("biz","perpetual");
+        params.put("biz", "perpetual");
         /** 条件订单 */
-        params.put("type","condition_orders");
+        params.put("type", "condition_orders");
         /** 是否序列化 */
-        params.put("serialize",false);
-        pushMsg.put("params",params);
+        params.put("serialize", false);
+        pushMsg.put("params", params);
         return JSON.toJSONString(pushMsg);
     }
 
     public static void main(String[] args) {
         /** 秘钥 */
-        PrivateApiConfig.ACCESS_KEY="77827653e2b347fab36bfa69f2893dfb";
-        PrivateApiConfig.SECRET_KEY="058B4DECEFEF68EA59BBF132617627B2";
+        PrivateApiConfig.ACCESS_KEY = "77827653e2b347fab36bfa69f2893dfb";
+        PrivateApiConfig.SECRET_KEY = "058B4DECEFEF68EA59BBF132617627B2";
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(url,paramsGenerate(),true,true);
+        WebSocketUtil.webConnect(url, paramsGenerate(), true, true);
     }
 }

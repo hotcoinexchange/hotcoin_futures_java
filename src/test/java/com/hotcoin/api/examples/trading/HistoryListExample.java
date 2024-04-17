@@ -17,13 +17,28 @@ public class HistoryListExample {
 
     public static void main(String[] args) {
         Map<String, String> pathParam = new HashMap<>();
-        pathParam.put("type","11");
-        pathParam.put("side","open_long");
-        pathParam.put("price","11");
-        pathParam.put("amount","1");
-        pathParam.put("beMaker",String.valueOf(System.currentTimeMillis()));
+        /** 基础币 */
+        pathParam.put("base", "");
+        /** 仓位方向 1.开多open_long 2.开空open_short 3.平多close_long 4.平空close_short	 */
+        pathParam.put("detailSide", "");
+        /** 状态：1 已成交 2 部分成交已撤销 3 已撤单；多个条件过滤用","分隔	 */
+        pathParam.put("status", "");
+        /** 合约方向 0:正向,1:反向 */
+        pathParam.put("type", "");
+        /** 下单类型：10:限价 11:市价 13:强平单 14:爆仓单 15：穿仓 16：强减;多个条件过滤用","分隔 */
+        pathParam.put("systemType", "");
+        /** 开始时间	 */
+        pathParam.put("startDate", "");
+        /** 结束时间	 */
+        pathParam.put("endTime", "");
+        /** 第几页	 */
+        pathParam.put("page", "");
+        /** 页面大小	 */
+        pathParam.put("pageSize", "");
+        /** 计划类型：0 -止盈 1-止损 2-计划委托	 */
+        pathParam.put("stopLimitType", "");
 
-        String uri = "/api/v1/perpetual/products/BTCUSDT/order";
+        String uri = "/api/v1/perpetual/products/BTCUSDT/history-list";
         String result = HttpUtil.get(GlobalConfigEnum.HUGH, uri, pathParam);
         System.out.println(result);
     }

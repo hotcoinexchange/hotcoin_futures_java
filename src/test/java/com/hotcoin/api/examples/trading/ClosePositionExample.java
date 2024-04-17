@@ -17,14 +17,9 @@ public class ClosePositionExample {
 
     public static void main(String[] args) {
         Map<String, String> pathParam = new HashMap<>();
-        pathParam.put("type","11");
-        pathParam.put("side","open_long");
-        pathParam.put("price","11");
-        pathParam.put("amount","1");
-        pathParam.put("beMaker",String.valueOf(System.currentTimeMillis()));
 
-        String uri = "/api/v1/perpetual/products/BTCUSDT/order";
-        String result = HttpUtil.get(GlobalConfigEnum.HUGH, uri, pathParam);
+        String uri = "/api/v1/perpetual/products/BTCUSDT/long/closePosition";
+        String result = HttpUtil.post(GlobalConfigEnum.HUGH, uri, pathParam, null);
         System.out.println(result);
     }
 }

@@ -12,6 +12,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum HttpMethodEnum {
+    DELETE("DELETE"),
     GET("GET"),
     POST("POST");
     final String method;

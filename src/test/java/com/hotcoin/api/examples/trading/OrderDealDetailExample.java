@@ -17,13 +17,10 @@ public class OrderDealDetailExample {
 
     public static void main(String[] args) {
         Map<String, String> pathParam = new HashMap<>();
-        pathParam.put("type","11");
-        pathParam.put("side","open_long");
-        pathParam.put("price","11");
-        pathParam.put("amount","1");
-        pathParam.put("beMaker",String.valueOf(System.currentTimeMillis()));
+        /** 订单ID */
+        pathParam.put("orderId", "11");
 
-        String uri = "/api/v1/perpetual/products/BTCUSDT/order";
+        String uri = "/api/v1/perpetual/products/BTCUSDT/orderDetail";
         String result = HttpUtil.get(GlobalConfigEnum.HUGH, uri, pathParam);
         System.out.println(result);
     }

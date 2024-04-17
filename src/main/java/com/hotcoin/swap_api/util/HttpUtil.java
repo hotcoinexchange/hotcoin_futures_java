@@ -47,6 +47,26 @@ public class HttpUtil {
         }
     }
 
+    /**
+     * deleteq
+     * @param configEnum
+     * @param apiUri
+     * @param pathParam
+     * @return
+     */
+    public static String del(GlobalConfigEnum configEnum, String apiUri, Map<String, String> pathParam) {
+        Map<String, String> signature = SignatureUtil.createSignature(configEnum, pathParam, HttpMethodEnum.DELETE, apiUri);
+        HttpResponse response = HttpRequest.delete(configEnum.getHOST() + apiUri)
+                .query(signature)
+                .contentTypeJson()
+                .send();
+        try {
+            response.charset("utf-8");
+            return response.bodyText();
+        } finally {
+            response.close();
+        }
+    }
 
     private static String getUrl(String host, String uri, Map<String, Object> pathParam) {
         String temp = pathParam.keySet().stream().sorted().map(key -> key + "=" + pathParam.get(key)).collect(Collectors.joining("&"));

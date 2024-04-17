@@ -1,13 +1,6 @@
 package com.hotcoin.api.examples.push;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import com.alibaba.fastjson.JSON;
-import com.hotcoin.api.config.APIConfiguration;
 import com.hotcoin.api.constant.PrivateApiConfig;
-import com.hotcoin.api.utils.SignatureGenerator;
-import com.hotcoin.api.utils.UrlBuilder;
 import com.hotcoin.api.utils.WebSocketUtil;
 
 /**
@@ -17,15 +10,17 @@ import com.hotcoin.api.utils.WebSocketUtil;
  * @date 2024/4/12
  */
 public class SigninExample {
-    /** 访问地址 */
-    static String url ="wss://wss-ct.hotcoin.fit";
+    /**
+     * 访问地址
+     */
+    static String url = "wss://wss-ct.hotcoin.fit";
 
 
     public static void main(String[] args) {
         /** 秘钥 */
-        PrivateApiConfig.ACCESS_KEY="77827653e2b347fab36bfa69f2893dfb";
-        PrivateApiConfig.SECRET_KEY="058B4DECEFEF68EA59BBF132617627B2";
+        PrivateApiConfig.ACCESS_KEY = "77827653e2b347fab36bfa69f2893dfb";
+        PrivateApiConfig.SECRET_KEY = "058B4DECEFEF68EA59BBF132617627B2";
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(url,null,true,true);
+        WebSocketUtil.webConnect(url, null, true, true);
     }
 }
