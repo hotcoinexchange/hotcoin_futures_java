@@ -17,7 +17,7 @@ public class BatchOrderExample {
     /**
      * 请求url模版
      */
-    static String uriTemplate = "/api/v1/perpetual/products/{}/batch-order";
+    static String uriTemplate = "/api/v1/perpetual/products/{0}/batch-order";
 
     public static void main(String[] args) {
         Map<String, String> oneParam = new HashMap<>();

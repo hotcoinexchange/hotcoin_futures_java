@@ -18,7 +18,7 @@ public class LeverGearsExample {
     /**
      * 请求url模版
      */
-    static String uriTemplate = "/api/v1/perpetual/public/{}/lever-gears";
+    static String uriTemplate = "/api/v1/perpetual/public/{0}/lever-gears";
 
     public static void main(String[] args) {
         Map<String, String> pathParam = new HashMap<>();

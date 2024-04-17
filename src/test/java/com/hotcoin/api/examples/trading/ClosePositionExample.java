@@ -18,7 +18,7 @@ public class ClosePositionExample {
     /**
      * 请求url模版
      */
-    static String uriTemplate = "/api/v1/perpetual/products/{}/{}/closePosition";
+    static String uriTemplate = "/api/v1/perpetual/products/{0}/{1}/closePosition";
 
     public static void main(String[] args) {
         Map<String, String> pathParam = new HashMap<>();

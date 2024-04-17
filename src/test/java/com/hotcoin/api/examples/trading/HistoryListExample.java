@@ -18,7 +18,7 @@ public class HistoryListExample {
     /**
      * 请求url模版
      */
-    static String uriTemplate = "/api/v1/perpetual/products/{}/history-list";
+    static String uriTemplate = "/api/v1/perpetual/products/{0}/history-list";
 
     public static void main(String[] args) {
         Map<String, String> pathParam = new HashMap<>();

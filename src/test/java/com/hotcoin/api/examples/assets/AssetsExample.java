@@ -18,12 +18,12 @@ public class AssetsExample {
     /**
      * 请求url模版
      */
-    static String uriTemplate = "/api/v1/perpetual/account/assets/{}";
+    static String uriTemplate = "/api/v1/perpetual/account/assets/{0}";
 
     public static void main(String[] args) {
         Map<String, String> pathParam = new HashMap<>();
 
-        /** 路径参数：合约code */
+
         String uri = MessageFormat.format(uriTemplate, "BTCUSDT");
         String result = HttpUtil.get(GlobalConfigEnum.HUGH, uri, pathParam);
         System.out.println(result);

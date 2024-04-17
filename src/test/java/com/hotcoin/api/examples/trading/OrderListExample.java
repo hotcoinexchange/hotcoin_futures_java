@@ -18,7 +18,7 @@ public class OrderListExample {
     /**
      * 请求url模版
      */
-    static String uriTemplate = "/api/v1/perpetual/products/{}/list";
+    static String uriTemplate = "/api/v1/perpetual/products/{0}/list";
 
     public static void main(String[] args) {
         Map<String, String> pathParam = new HashMap<>();
