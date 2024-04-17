@@ -7,13 +7,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 我的资产
+ * 成交记录
  *
  * @author zenghaihui
  * @date 2024/4/16
  */
 public class DealRecordExample {
 
+    /**
+     * 请求url模版
+     */
+    static String uriTemplate = "/api/v1/perpetual/account/deal-record";
 
     public static void main(String[] args) {
         Map<String, String> pathParam = new HashMap<>();
@@ -31,7 +35,7 @@ public class DealRecordExample {
         pathParam.put("startId", "1");
         /** 结束id */
         pathParam.put("endId", "10000000");
-        String uri = "/api/v1/perpetual/account/deal-record";
+        String uri = uriTemplate;
         String result = HttpUtil.get(GlobalConfigEnum.HUGH, uri, pathParam);
         System.out.println(result);
     }

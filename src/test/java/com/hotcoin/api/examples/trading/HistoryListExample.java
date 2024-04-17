@@ -3,6 +3,7 @@ package com.hotcoin.api.examples.trading;
 import com.hotcoin.swap_api.enums.GlobalConfigEnum;
 import com.hotcoin.swap_api.util.HttpUtil;
 
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,6 +15,10 @@ import java.util.Map;
  */
 public class HistoryListExample {
 
+    /**
+     * 请求url模版
+     */
+    static String uriTemplate = "/api/v1/perpetual/products/{}/history-list";
 
     public static void main(String[] args) {
         Map<String, String> pathParam = new HashMap<>();
@@ -38,7 +43,8 @@ public class HistoryListExample {
         /** 计划类型：0 -止盈 1-止损 2-计划委托	 */
         pathParam.put("stopLimitType", "");
 
-        String uri = "/api/v1/perpetual/products/BTCUSDT/history-list";
+        /** 路径参数：合约code */
+        String uri = MessageFormat.format(uriTemplate, "BTCUSDT");
         String result = HttpUtil.get(GlobalConfigEnum.HUGH, uri, pathParam);
         System.out.println(result);
     }

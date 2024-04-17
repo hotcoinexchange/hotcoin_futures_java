@@ -14,10 +14,16 @@ import java.util.Map;
  */
 public class AssetsListExample {
 
+    /**
+     * 请求url模版
+     */
+    static String uriTemplate = "/api/v1/perpetual/account/assets";
 
     public static void main(String[] args) {
         Map<String, String> pathParam = new HashMap<>();
-        String uri = "/api/v1/perpetual/account/assets";
+
+        /** 路径参数：合约code */
+        String uri = uriTemplate;
         String result = HttpUtil.get(GlobalConfigEnum.HUGH, uri, pathParam);
         System.out.println(result);
     }

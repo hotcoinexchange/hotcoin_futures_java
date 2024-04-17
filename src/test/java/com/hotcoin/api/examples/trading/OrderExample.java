@@ -3,6 +3,7 @@ package com.hotcoin.api.examples.trading;
 import com.hotcoin.swap_api.enums.GlobalConfigEnum;
 import com.hotcoin.swap_api.util.HttpUtil;
 
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,6 +15,10 @@ import java.util.Map;
  */
 public class OrderExample {
 
+    /**
+     * 请求url模版
+     */
+    static String uriTemplate = "/api/v1/perpetual/products/{}/order";
 
     public static void main(String[] args) {
         Map<String, String> pathParam = new HashMap<>();
@@ -28,7 +33,8 @@ public class OrderExample {
         /** 被动委托：0:不被动委托 1:被动委托 */
         pathParam.put("beMaker", "0");
 
-        String uri = "/api/v1/perpetual/products/BTCUSDT/order";
+        /** 路径参数：合约code */
+        String uri = MessageFormat.format(uriTemplate, "BTCUSDT");
         String result = HttpUtil.get(GlobalConfigEnum.HUGH, uri, pathParam);
         System.out.println(result);
     }

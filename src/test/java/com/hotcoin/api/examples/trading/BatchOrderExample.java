@@ -1,5 +1,6 @@
 package com.hotcoin.api.examples.trading;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,10 @@ import java.util.Map;
  */
 public class BatchOrderExample {
 
+    /**
+     * 请求url模版
+     */
+    static String uriTemplate = "/api/v1/perpetual/products/{}/batch-order";
 
     public static void main(String[] args) {
         Map<String, String> oneParam = new HashMap<>();
@@ -50,7 +55,8 @@ public class BatchOrderExample {
         pathParam.add(oneParam);
         pathParam.add(twoParam);
 
-        String uri = "/api/v1/perpetual/products/BTCUSDT/batch-order";
+        /** 路径参数：合约code */
+        String uri = MessageFormat.format(uriTemplate, "BTCUSDT");
         //        String result = HttpUtil.post(GlobalConfigEnum.HUGH, uri, pathParam);
         //        System.out.println(result);
     }
