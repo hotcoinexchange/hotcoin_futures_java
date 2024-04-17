@@ -22,6 +22,7 @@ public class OrderExample {
 
     public static void main(String[] args) {
         Map<String, String> pathParam = new HashMap<>();
+        Map<String, String> bodyParam = new HashMap<>();
         /** 类型（10 限价 11 市价） */
         pathParam.put("type", "11");
         /** 方向（open_long 开多 open_short 开空 close_long 平多 close_short 平空） */
@@ -35,7 +36,7 @@ public class OrderExample {
 
         /** 路径参数：合约code */
         String uri = MessageFormat.format(uriTemplate, "BTCUSDT");
-        String result = HttpUtil.get(GlobalConfigEnum.HUGH, uri, pathParam);
+        String result = HttpUtil.post(GlobalConfigEnum.HUGH, uri, pathParam, pathParam);
         System.out.println(result);
     }
 }
