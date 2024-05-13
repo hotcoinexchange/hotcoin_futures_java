@@ -49,6 +49,21 @@ public class HttpUtil {
         }
     }
 
+
+    public static String hostGet(String host, String apiUri, Map<String, String> pathParam,
+            String accessKey, String secretKey) {
+        Map<String, String> signature = SignatureUtil
+                .createSignature(pathParam, HttpMethodEnum.GET, apiUri, accessKey, secretKey);
+        HttpResponse response =
+                HttpRequest.get(host + apiUri).query(signature).contentTypeJson().send();
+        try {
+            response.charset("utf-8");
+            return response.bodyText();
+        } finally {
+            response.close();
+        }
+    }
+
     /**
      * delete请求
      */
