@@ -16,7 +16,7 @@ public class TickersExample {
     /**
      * 访问地址
      */
-    static String url = "wss://wss-ct.hotcoin.fit";
+    static String url ="wss://test-perpetual-wss.hotcx.com";
 
     /**
      * 请求参数制造方法
@@ -29,9 +29,13 @@ public class TickersExample {
         /** 业务类型 */
         params.put("biz", "perpetual");
         /** 订阅项 */
+        params.put("env", "0");
+        /** 订阅项 */
         params.put("type", "tickers");
         /** 是否序列化 */
         params.put("serialize", false);
+        /** 时区 */
+        params.put("granularity", "UTC+05:00");
         pushMsg.put("params", params);
         return JSON.toJSONString(pushMsg);
     }

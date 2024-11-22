@@ -17,7 +17,7 @@ public class FundRatesExample {
     /**
      * 访问地址
      */
-    static String url = "wss://wss-ct.hotcoin.fit";
+    static String url ="wss://test-perpetual-wss.hotcx.com";
 
     /**
      * 请求参数制造方法

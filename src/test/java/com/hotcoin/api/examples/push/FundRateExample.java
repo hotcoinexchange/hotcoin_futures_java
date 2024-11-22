@@ -3,6 +3,7 @@ package com.hotcoin.api.examples.push;
 import com.alibaba.fastjson.JSON;
 import com.hotcoin.api.constant.PrivateApiConfig;
 import com.hotcoin.api.utils.WebSocketUtil;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,11 +14,12 @@ import java.util.Map;
  * @author zenghaihui
  * @date 2024/4/12
  */
+@Slf4j
 public class FundRateExample {
     /**
      * 访问地址
      */
-    static String url = "wss://wss-ct.hotcoin.fit";
+    static String url ="wss://test-perpetual-wss.hotcx.com";
 
     /**
      * 请求参数制造方法
@@ -32,19 +34,34 @@ public class FundRateExample {
         /** 资金费率 */
         params.put("type", "fund_rate");
         /** 合约CODE */
-        params.put("contractCode", "btcusdt");
+        params.put("contractCode", "BTCUSDT");
         /** 是否序列化 */
         params.put("serialize", false);
         pushMsg.put("params", params);
         return JSON.toJSONString(pushMsg);
     }
 
-    public static void main(String[] args) {
-        /** 秘钥 */
-        PrivateApiConfig.ACCESS_KEY = "77827653e2b347fab36bfa69f2893dfb";
-        PrivateApiConfig.SECRET_KEY = "058B4DECEFEF68EA59BBF132617627B2";
-        /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(url, paramsGenerate(), true, true);
-    }
+//    public static void main(String[] args) throws InterruptedException {
+//        /** 秘钥 */
+//        PrivateApiConfig.ACCESS_KEY = "77827653e2b347fab36bfa69f2893dfb";
+//        PrivateApiConfig.SECRET_KEY = "058B4DECEFEF68EA59BBF132617627B2";
+//        WebSocketUtil.webConnect(url, paramsGenerate(), false, true);
+//    }
 
+    public static void main(String[] args) throws InterruptedException {
+        for(int i=0; i<100000 ;i++) {
+            String custcodeList[] = {"BTCUSDT", "BCHUSDT", "SOLUSDT", "LTCUSDT", "ETCUSDT", "ZRXUSDT", "ETHUSDT", "DOGEUSDT", "DASHUSDT", "FILUSDT"};
+            for (String custcode : custcodeList) {
+                String ticker = "{\"event\":\"subscribe\",\"params\":{\"serialize\":false,\"biz\":\"perpetual\",\"type\":\"ticker\",\"contractCode\":\"" + custcode + "\"}}";
+                WebSocketUtil.webPressureConnect(url, ticker, false);
+                String candles = "{\"event\":\"subscribe\",\"params\":{\"serialize\":false,\"biz\":\"perpetual\",\"granularity\":\"1min\",\"type\":\"candles\",\"contractCode\":\"" + custcode + "\"}}";
+                WebSocketUtil.webPressureConnect(url, candles, false);
+                String fundRate = "{\"event\":\"subscribe\",\"params\":{\"serialize\":false,\"biz\":\"perpetual\",\"type\":\"fund_rate\",\"contractCode\":\"" + custcode + "\"}}";
+                WebSocketUtil.webPressureConnect(url, fundRate, false);
+                String depth = "{\"event\":\"subscribe\",\"params\":{\"serialize\":false,\"biz\":\"perpetual\",\"type\":\"depth\",\"contractCode\":\"" + custcode + "\"}}";
+                WebSocketUtil.webPressureConnect(url, depth, false);
+            }
+            Thread.sleep(50);
+        }
+    }
 }

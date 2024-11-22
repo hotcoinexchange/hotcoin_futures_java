@@ -70,6 +70,34 @@ public class WebSocketUtil {
     }
 
     /**
+     * 压测使用
+     * @param url 连接地址
+     * @param params json入参
+     * @param loginIn 是否登陆
+     */
+    public static void webPressureConnect(String url, String params,boolean loginIn){
+        try {
+            URI uri = new URI(url);
+            HotcoinWebSocketClient client = new HotcoinWebSocketClient(uri){
+                @SneakyThrows
+                @Override
+                public void onOpen(ServerHandshake handShakeData) {
+                    System.out.println("Connected to server");
+                    if(loginIn){
+                        System.out.println("login message: " + loginGenerate());
+                        send(loginGenerate());
+                    }
+                    close();
+                }
+            };
+            client.connect();
+
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 定时任务调用心跳
      * @param client
      */

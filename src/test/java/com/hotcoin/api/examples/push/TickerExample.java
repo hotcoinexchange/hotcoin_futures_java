@@ -2,6 +2,7 @@ package com.hotcoin.api.examples.push;
 
 import com.alibaba.fastjson.JSON;
 import com.hotcoin.api.utils.WebSocketUtil;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,11 +13,12 @@ import java.util.Map;
  * @author zenghaihui
  * @date 2024/4/10
  */
+@Slf4j
 public class TickerExample {
     /**
      * 访问地址
      */
-    static String url = "wss://wss-ct.hotcoin.fit";
+    static String url ="wss://test-perpetual-wss.hotcx.com";
 
     /**
      * 请求参数制造方法
@@ -31,7 +33,7 @@ public class TickerExample {
         /** 订阅项 */
         params.put("type", "ticker");
         /** 合约CODE */
-        params.put("contractCode", "btcusdt");
+        params.put("contractCode", "etcusdt");
         /** 是否序列化 */
         params.put("serialize", false);
         pushMsg.put("params", params);
