@@ -15,10 +15,14 @@ package com.hotcoin.api.constant;
 public class PrivateApiConfig {
 
     /**
-     * AccessKeyId
-     * 申请的API Key中的 Access Key
+     * hugh的 Access Key
      */
-    public static String ACCESS_KEY = "77827653e2b347fab36bfa69f2893dfb";
+    public static String HUGH_KEY = "77827653e2b347fab36bfa69f2893dfb";
+
+    /**
+     * 量化管理员 的 Access Key
+     */
+    public static String QUANT_KEY = "790bca44d6fd463bb61df8fa95b4ae5a";
 
     /**
      * Secret Key

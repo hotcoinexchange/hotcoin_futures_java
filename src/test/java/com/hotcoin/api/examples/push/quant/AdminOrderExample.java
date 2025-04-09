@@ -1,6 +1,7 @@
 package com.hotcoin.api.examples.push.quant;
 
 import com.alibaba.fastjson.JSON;
+import com.hotcoin.api.constant.HotcoinApiUrls;
 import com.hotcoin.api.constant.PrivateApiConfig;
 import com.hotcoin.api.utils.WebSocketUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -16,10 +17,6 @@ import java.util.Map;
  */
 @Slf4j
 public class AdminOrderExample {
-    /**
-     * 访问地址
-     */
-    static String url ="wss://test-perpetual-wss.hotcx.com";
 
     /**
      * 请求参数制造方法
@@ -41,6 +38,6 @@ public class AdminOrderExample {
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(url, paramsGenerate(), PrivateApiConfig.ACCESS_KEY, true);
+        WebSocketUtil.webConnect(HotcoinApiUrls.TEST_URL, paramsGenerate(), PrivateApiConfig.HUGH_KEY, true);
     }
 }

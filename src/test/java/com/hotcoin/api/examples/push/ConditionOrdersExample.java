@@ -1,6 +1,7 @@
 package com.hotcoin.api.examples.push;
 
 import com.alibaba.fastjson.JSON;
+import com.hotcoin.api.constant.HotcoinApiUrls;
 import com.hotcoin.api.constant.PrivateApiConfig;
 import com.hotcoin.api.utils.WebSocketUtil;
 
@@ -14,10 +15,6 @@ import java.util.Map;
  * @date 2024/4/12
  */
 public class ConditionOrdersExample {
-    /**
-     * 访问地址
-     */
-    static String url = "wss://wss-ct.hotcoin.fit";
 
     /**
      * 请求参数制造方法
@@ -38,10 +35,7 @@ public class ConditionOrdersExample {
     }
 
     public static void main(String[] args) {
-        /** 秘钥 */
-        PrivateApiConfig.ACCESS_KEY = "77827653e2b347fab36bfa69f2893dfb";
-        PrivateApiConfig.SECRET_KEY = "058B4DECEFEF68EA59BBF132617627B2";
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(url, paramsGenerate(), PrivateApiConfig.ACCESS_KEY, true);
+        WebSocketUtil.webConnect(HotcoinApiUrls.TEST_URL, paramsGenerate(), PrivateApiConfig.HUGH_KEY, true);
     }
 }

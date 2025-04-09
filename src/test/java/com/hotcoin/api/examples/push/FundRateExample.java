@@ -1,6 +1,7 @@
 package com.hotcoin.api.examples.push;
 
 import com.alibaba.fastjson.JSON;
+import com.hotcoin.api.constant.HotcoinApiUrls;
 import com.hotcoin.api.constant.PrivateApiConfig;
 import com.hotcoin.api.utils.WebSocketUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -16,11 +17,6 @@ import java.util.Map;
  */
 @Slf4j
 public class FundRateExample {
-    /**
-     * 访问地址
-     */
-    static String url ="wss://test-perpetual-wss.hotcx.com";
-
     /**
      * 请求参数制造方法
      */
@@ -53,13 +49,13 @@ public class FundRateExample {
             String custcodeList[] = {"BTCUSDT", "BCHUSDT", "SOLUSDT", "LTCUSDT", "ETCUSDT", "ZRXUSDT", "ETHUSDT", "DOGEUSDT", "DASHUSDT", "FILUSDT"};
             for (String custcode : custcodeList) {
                 String ticker = "{\"event\":\"subscribe\",\"params\":{\"serialize\":false,\"biz\":\"perpetual\",\"type\":\"ticker\",\"contractCode\":\"" + custcode + "\"}}";
-                WebSocketUtil.webPressureConnect(url, ticker, false);
+                WebSocketUtil.webPressureConnect(HotcoinApiUrls.TEST_URL, ticker, false);
                 String candles = "{\"event\":\"subscribe\",\"params\":{\"serialize\":false,\"biz\":\"perpetual\",\"granularity\":\"1min\",\"type\":\"candles\",\"contractCode\":\"" + custcode + "\"}}";
-                WebSocketUtil.webPressureConnect(url, candles, false);
+                WebSocketUtil.webPressureConnect(HotcoinApiUrls.TEST_URL, candles, false);
                 String fundRate = "{\"event\":\"subscribe\",\"params\":{\"serialize\":false,\"biz\":\"perpetual\",\"type\":\"fund_rate\",\"contractCode\":\"" + custcode + "\"}}";
-                WebSocketUtil.webPressureConnect(url, fundRate, false);
+                WebSocketUtil.webPressureConnect(HotcoinApiUrls.TEST_URL, fundRate, false);
                 String depth = "{\"event\":\"subscribe\",\"params\":{\"serialize\":false,\"biz\":\"perpetual\",\"type\":\"depth\",\"contractCode\":\"" + custcode + "\"}}";
-                WebSocketUtil.webPressureConnect(url, depth, false);
+                WebSocketUtil.webPressureConnect(HotcoinApiUrls.TEST_URL, depth, false);
             }
             Thread.sleep(50);
         }

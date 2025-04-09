@@ -1,6 +1,7 @@
 package com.hotcoin.api.examples.push;
 
 import com.alibaba.fastjson.JSON;
+import com.hotcoin.api.constant.HotcoinApiUrls;
 import com.hotcoin.api.utils.WebSocketUtil;
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,10 +16,6 @@ import java.util.Map;
  */
 @Slf4j
 public class DepthExample {
-    /**
-     * 访问地址
-     */
-    static String url ="wss://test-perpetual-wss.hotcx.com";
 
     /**
      * 请求参数制造方法
@@ -41,10 +38,8 @@ public class DepthExample {
     }
 
     public static void main(String[] args) {
-
-        log.error(paramsGenerate());
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(url, paramsGenerate(), null, true);
+        WebSocketUtil.webConnect(HotcoinApiUrls.TEST_URL, paramsGenerate(), null, true);
     }
 
 }

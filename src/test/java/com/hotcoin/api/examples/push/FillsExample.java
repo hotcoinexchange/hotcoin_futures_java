@@ -1,6 +1,7 @@
 package com.hotcoin.api.examples.push;
 
 import com.alibaba.fastjson.JSON;
+import com.hotcoin.api.constant.HotcoinApiUrls;
 import com.hotcoin.api.utils.WebSocketUtil;
 
 import java.util.HashMap;
@@ -13,10 +14,6 @@ import java.util.Map;
  * @date 2024/4/10
  */
 public class FillsExample {
-    /**
-     * 访问地址
-     */
-    static String url = "wss://wss-ct.hotcoin.fit";
 
     /**
      * 请求参数制造方法
@@ -40,6 +37,6 @@ public class FillsExample {
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(url, paramsGenerate(), null, true);
+        WebSocketUtil.webConnect(HotcoinApiUrls.TEST_URL, paramsGenerate(), null, true);
     }
 }
