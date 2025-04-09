@@ -24,7 +24,7 @@ public class APIConfiguration {
      * Access Key
      * {@link com.hotcoin.api.constant.PrivateApiConfig}
      */
-    private String accessKey = PrivateApiConfig.ACCESS_KEY;
+    private String accessKey = PrivateApiConfig.HUGH_KEY;
 
     /**
      * Secret Key
