@@ -21,6 +21,6 @@ public class SigninExample {
         PrivateApiConfig.ACCESS_KEY = "77827653e2b347fab36bfa69f2893dfb";
         PrivateApiConfig.SECRET_KEY = "058B4DECEFEF68EA59BBF132617627B2";
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(url, null, true, true);
+        WebSocketUtil.webConnect(url, null, PrivateApiConfig.ACCESS_KEY, true);
     }
 }

@@ -33,7 +33,7 @@ public class TickerExample {
         /** 订阅项 */
         params.put("type", "ticker");
         /** 合约CODE */
-        params.put("contractCode", "etcusdt");
+        params.put("contractCode", "btcusdt");
         /** 是否序列化 */
         params.put("serialize", false);
         pushMsg.put("params", params);
@@ -42,7 +42,7 @@ public class TickerExample {
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(url, paramsGenerate(), false, true);
+        WebSocketUtil.webConnect(url, paramsGenerate(), null, true);
     }
 
 }

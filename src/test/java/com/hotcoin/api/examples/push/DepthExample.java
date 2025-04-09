@@ -44,7 +44,7 @@ public class DepthExample {
 
         log.error(paramsGenerate());
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(url, paramsGenerate(), false, true);
+        WebSocketUtil.webConnect(url, paramsGenerate(), null, true);
     }
 
 }

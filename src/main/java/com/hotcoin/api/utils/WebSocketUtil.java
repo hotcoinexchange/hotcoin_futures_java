@@ -6,7 +6,6 @@ import com.hotcoin.api.constant.PrivateApiConfig;
 import lombok.SneakyThrows;
 import org.java_websocket.handshake.ServerHandshake;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.LinkedHashMap;
@@ -34,7 +33,7 @@ public class WebSocketUtil {
      * @param loginIn 是否登陆
      * @param shortConnect 是否闪断
      */
-    public static void webConnect(String url, String params,boolean loginIn, boolean shortConnect){
+    public static void webConnect(String url, String params, String accessKey, boolean shortConnect){
         try {
             URI uri = new URI(url);
             HotcoinWebSocketClient client = new HotcoinWebSocketClient(uri){
@@ -42,9 +41,9 @@ public class WebSocketUtil {
                 @Override
                 public void onOpen(ServerHandshake handShakeData) {
                     System.out.println("Connected to server");
-                    if(loginIn){
-                        System.out.println("login message: " + loginGenerate());
-                        send(loginGenerate());
+                    if(null != accessKey){
+                        System.out.println("login message: " + loginGenerate(accessKey));
+                        send(loginGenerate(accessKey));
                     }
 
                     ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
@@ -84,8 +83,8 @@ public class WebSocketUtil {
                 public void onOpen(ServerHandshake handShakeData) {
                     System.out.println("Connected to server");
                     if(loginIn){
-                        System.out.println("login message: " + loginGenerate());
-                        send(loginGenerate());
+                        System.out.println("login message: " + loginGenerate(accessKey));
+                        send(loginGenerate(accessKey));
                     }
                     close();
                 }
@@ -130,14 +129,14 @@ public class WebSocketUtil {
      * 请求参数制造方法
      * @return
      */
-    static String loginGenerate(){
+    static String loginGenerate(String accessKey){
         long time = System.currentTimeMillis();
         Map<String,Object> pushMsg = new LinkedHashMap<>();
         /** 请求类型 */
         pushMsg.put("event","signin");
         Map<String,Object> params = new LinkedHashMap<>();
         /** 访问key */
-        params.put("apiKey", PrivateApiConfig.ACCESS_KEY);
+        params.put("apiKey", accessKey);
         /** 签名 */
         params.put("signature", SignatureGenerator.createWebSocketSignature(time));
         /** timestamp */

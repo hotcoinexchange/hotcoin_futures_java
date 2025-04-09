@@ -42,7 +42,7 @@ public class AssetExample {
         PrivateApiConfig.ACCESS_KEY = "77827653e2b347fab36bfa69f2893dfb";
         PrivateApiConfig.SECRET_KEY = "058B4DECEFEF68EA59BBF132617627B2";
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(url, paramsGenerate(), true, true);
+        WebSocketUtil.webConnect(url, paramsGenerate(), PrivateApiConfig.ACCESS_KEY, true);
     }
 
 }

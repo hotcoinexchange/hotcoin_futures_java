@@ -1,23 +1,25 @@
-package com.hotcoin.api.examples.push;
+package com.hotcoin.api.examples.push.quant;
 
 import com.alibaba.fastjson.JSON;
 import com.hotcoin.api.constant.PrivateApiConfig;
 import com.hotcoin.api.utils.WebSocketUtil;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 条件订单
+ * 单个行情
  *
  * @author zenghaihui
- * @date 2024/4/12
+ * @date 2024/4/10
  */
-public class ConditionOrdersExample {
+@Slf4j
+public class AdminOrderExample {
     /**
      * 访问地址
      */
-    static String url = "wss://wss-ct.hotcoin.fit";
+    static String url ="wss://test-perpetual-wss.hotcx.com";
 
     /**
      * 请求参数制造方法
@@ -29,18 +31,15 @@ public class ConditionOrdersExample {
         Map<String, Object> params = new HashMap<>();
         /** 业务类型 */
         params.put("biz", "perpetual");
-        /** 条件订单 */
-        params.put("type", "condition_orders");
         /** 是否序列化 */
         params.put("serialize", false);
+        /** 订阅项 */
+        params.put("type", "admin_orders");
         pushMsg.put("params", params);
         return JSON.toJSONString(pushMsg);
     }
 
     public static void main(String[] args) {
-        /** 秘钥 */
-        PrivateApiConfig.ACCESS_KEY = "77827653e2b347fab36bfa69f2893dfb";
-        PrivateApiConfig.SECRET_KEY = "058B4DECEFEF68EA59BBF132617627B2";
         /** 调用远程WebSocket */
         WebSocketUtil.webConnect(url, paramsGenerate(), PrivateApiConfig.ACCESS_KEY, true);
     }

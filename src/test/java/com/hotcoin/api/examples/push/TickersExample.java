@@ -42,6 +42,6 @@ public class TickersExample {
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(url, paramsGenerate(), false, true);
+        WebSocketUtil.webConnect(url, paramsGenerate(), null, true);
     }
 }
