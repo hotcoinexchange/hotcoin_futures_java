@@ -30,7 +30,7 @@ public class WebSocketUtil {
      * web连接
      * @param url 连接地址
      * @param params json入参
-     * @param loginIn 是否登陆
+     * @param accessKey 是否登陆
      * @param shortConnect 是否闪断
      */
     public static void webConnect(String url, String params, String accessKey, boolean shortConnect){
@@ -138,7 +138,7 @@ public class WebSocketUtil {
         /** 访问key */
         params.put("apiKey", accessKey);
         /** 签名 */
-        params.put("signature", SignatureGenerator.createWebSocketSignature(time));
+        params.put("signature", SignatureGenerator.createWebSocketSignature(time, accessKey));
         /** timestamp */
         params.put("timestamp",time);
         pushMsg.put("params",params);

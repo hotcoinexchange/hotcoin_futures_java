@@ -20,14 +20,20 @@ public class PrivateApiConfig {
     public static String HUGH_KEY = "77827653e2b347fab36bfa69f2893dfb";
 
     /**
+     * Secret Key
+     * 申请的API Key中的 Secret Key
+     */
+    public static String HUGH_SECRET_KEY = "058B4DECEFEF68EA59BBF132617627B2";
+
+    /**
      * 量化管理员 的 Access Key
      */
     public static String QUANT_KEY = "790bca44d6fd463bb61df8fa95b4ae5a";
 
     /**
-     * Secret Key
-     * 申请的API Key中的 Secret Key
+     * 量化管理员 的 Access Key
      */
-    public static String SECRET_KEY = "058B4DECEFEF68EA59BBF132617627B2";
+    public static String QUANT_SECRET_KEY = "A70667A5EB1A5998C2DCD1338C27A94B";
+
 
 }

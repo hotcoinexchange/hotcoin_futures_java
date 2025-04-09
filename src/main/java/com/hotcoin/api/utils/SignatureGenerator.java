@@ -2,6 +2,7 @@ package com.hotcoin.api.utils;
 
 import com.hotcoin.api.config.APIConfiguration;
 import com.hotcoin.api.constant.ApiConstants;
+import com.hotcoin.api.constant.PrivateApiConfig;
 import com.hotcoin.api.exceptions.HotcoinApiException;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
@@ -19,7 +20,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
-import java.util.stream.Collectors;
 
 /**
  * Signature Generator
@@ -100,7 +100,7 @@ public class SignatureGenerator {
      * 生成websocket的签名
      * @return
      */
-    public static String createWebSocketSignature(long time){
+    public static String createWebSocketSignature(long time, String accessKey){
         try {
             APIConfiguration config= new APIConfiguration();
 
@@ -109,10 +109,10 @@ public class SignatureGenerator {
 
             //基于每个元组的第一个元素排序
             SortedMap<String, String> sortedParams = new TreeMap<>();
-            sortedParams.put("AccessKeyId",config.getAccessKey());
-            sortedParams.put("SignatureMethod","HmacSHA256");
-            sortedParams.put("SignatureVersion","2");
-            sortedParams.put("Timestamp",Long.toString(time));
+            sortedParams.put("AccessKeyId", accessKey);
+            sortedParams.put("SignatureMethod", "HmacSHA256");
+            sortedParams.put("SignatureVersion", "2");
+            sortedParams.put("Timestamp", Long.toString(time));
 
             // 排序后的键值对列表转换为URL编码的字符串
             StringBuilder tempParams = new StringBuilder();
@@ -125,10 +125,13 @@ public class SignatureGenerator {
                 tempParams.append("=");
                 tempParams.append(URLEncoder.encode(entry.getValue(), StandardCharsets.UTF_8.toString()));
             }
-
+            String secretKey = PrivateApiConfig.HUGH_SECRET_KEY;
+            if(accessKey.equalsIgnoreCase(PrivateApiConfig.QUANT_KEY)){
+                secretKey = PrivateApiConfig.QUANT_SECRET_KEY;
+            }
             //拼接字符串
             String payload = method + "\n" + host + "\n/" + "wss" + "\n" + tempParams.toString();
-            SecretKeySpec secKey = new SecretKeySpec(config.getSecretKey().getBytes(StandardCharsets.UTF_8), HMACSHA_256);
+            SecretKeySpec secKey = new SecretKeySpec(secretKey.getBytes(StandardCharsets.UTF_8), HMACSHA_256);
             Mac mac = Mac.getInstance(HMACSHA_256);
             mac.init(secKey);
             byte[] hmacSha256 = mac.doFinal(payload.getBytes(StandardCharsets.UTF_8));
