@@ -129,6 +129,10 @@ public class SignatureGenerator {
             if(accessKey.equalsIgnoreCase(PrivateApiConfig.QUANT_KEY)){
                 secretKey = PrivateApiConfig.QUANT_SECRET_KEY;
             }
+            if(accessKey.equalsIgnoreCase(PrivateApiConfig.POR_QUANT_KEY)){
+                secretKey = PrivateApiConfig.POR_QUANT_SECRET_KEY;
+            }
+
             //拼接字符串
             String payload = method + "\n" + host + "\n/" + "wss" + "\n" + tempParams.toString();
             SecretKeySpec secKey = new SecretKeySpec(secretKey.getBytes(StandardCharsets.UTF_8), HMACSHA_256);

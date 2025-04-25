@@ -24,8 +24,8 @@ public class WebSocketUtil {
     /** 定时任务处理心跳 */
     private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     /** 心跳间隔（seconds） */
-    private static final int HEARTBEAT_INTERVAL = 30;
-
+    private static final int HEARTBEAT_INTERVAL = 2;
+    private static Long connectTime = 0l;
     /**
      * web连接
      * @param url 连接地址
@@ -58,6 +58,7 @@ public class WebSocketUtil {
                 }
             };
             client.connect();
+            connectTime = System.currentTimeMillis();
             if(shortConnect) {
                 client.close();
                 return;
@@ -66,6 +67,89 @@ public class WebSocketUtil {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 定时任务调用心跳
+     * @param client
+     */
+    public static void startHeartbeat(HotcoinWebSocketClient client) {
+        // 创建一个Runnable任务来发送心跳
+        Runnable heartbeatTask = () -> sendHeartbeat(client);
+        scheduler.scheduleAtFixedRate(heartbeatTask, HEARTBEAT_INTERVAL, HEARTBEAT_INTERVAL, TimeUnit.SECONDS);
+    }
+
+    /**
+     * 发送心跳
+     * @param client
+     */
+    private static void sendHeartbeat(HotcoinWebSocketClient client) {
+        if (client != null && client.isOpen()) {
+            try {
+                System.out.println("Sending heartbeat...已连接" + (System.currentTimeMillis() - connectTime) / 1000 + "秒");
+                client.send("{ \"event\": \"ping\"}");
+            } catch (Exception e) {
+                System.err.println("Failed to send heartbeat: " + e.getMessage());
+                // 尝试重新连接
+                reconnect(client);
+            }
+        } else {
+            System.err.println("WebSocket connection is closed. Stopping heartbeat.");
+            stopHeartbeat();
+        }
+    }
+
+    /**
+     * 发送心跳
+     * @param client
+     */
+    private static void reconnect(HotcoinWebSocketClient client) {
+        int attempts = 0;
+        while (attempts < 5) {
+            try {
+                System.out.println("Attempting to reconnect... Attempt " + (attempts + 1));
+                client.reconnectBlocking();
+                System.out.println("Reconnected successfully!");
+                return;
+            } catch (Exception e) {
+                System.err.println("Reconnect failed: " + e.getMessage());
+                attempts++;
+                try {
+                    Thread.sleep(5000); // 等待 5 秒后重试
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }
+        System.err.println("Max reconnection attempts reached. Closing client.");
+        stopHeartbeat();
+    }
+
+    /**
+     * 关闭心跳
+     */
+    public static void stopHeartbeat() {
+        scheduler.shutdown();
+    }
+
+    /**
+     * 请求参数制造方法
+     * @return
+     */
+    static String loginGenerate(String accessKey){
+        long time = System.currentTimeMillis();
+        Map<String,Object> pushMsg = new LinkedHashMap<>();
+        /** 请求类型 */
+        pushMsg.put("event","signin");
+        Map<String,Object> params = new LinkedHashMap<>();
+        /** 访问key */
+        params.put("apiKey", accessKey);
+        /** 签名 */
+        params.put("signature", SignatureGenerator.createWebSocketSignature(time, accessKey));
+        /** timestamp */
+        params.put("timestamp",time);
+        pushMsg.put("params",params);
+        return JSON.toJSONString(pushMsg);
     }
 
     /**
@@ -96,52 +180,4 @@ public class WebSocketUtil {
         }
     }
 
-    /**
-     * 定时任务调用心跳
-     * @param client
-     */
-    public static void startHeartbeat(HotcoinWebSocketClient client) {
-        // 创建一个Runnable任务来发送心跳
-        Runnable heartbeatTask = () -> sendHeartbeat(client);
-        scheduler.scheduleAtFixedRate(heartbeatTask, HEARTBEAT_INTERVAL, HEARTBEAT_INTERVAL, TimeUnit.SECONDS);
-    }
-
-    /**
-     * 发送心跳
-     * @param client
-     */
-    private static void sendHeartbeat(HotcoinWebSocketClient client) {
-        try {
-            client.send("{ \"event\": \"ping\"}");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * 关闭心跳
-     */
-    public static void stopHeartbeat() {
-        scheduler.shutdown();
-    }
-
-    /**
-     * 请求参数制造方法
-     * @return
-     */
-    static String loginGenerate(String accessKey){
-        long time = System.currentTimeMillis();
-        Map<String,Object> pushMsg = new LinkedHashMap<>();
-        /** 请求类型 */
-        pushMsg.put("event","signin");
-        Map<String,Object> params = new LinkedHashMap<>();
-        /** 访问key */
-        params.put("apiKey", accessKey);
-        /** 签名 */
-        params.put("signature", SignatureGenerator.createWebSocketSignature(time, accessKey));
-        /** timestamp */
-        params.put("timestamp",time);
-        pushMsg.put("params",params);
-        return JSON.toJSONString(pushMsg);
-    }
 }

@@ -16,7 +16,7 @@ import java.util.Map;
  * @date 2024/4/10
  */
 @Slf4j
-public class AdminOrderExample {
+public class AdminPositionExample {
 
     /**
      * 请求参数制造方法
@@ -31,7 +31,7 @@ public class AdminOrderExample {
         /** 是否序列化 */
         params.put("serialize", false);
         /** 订阅项 */
-        params.put("type", "admin_orders");
+        params.put("type", "admin_position");
         pushMsg.put("params", params);
         return JSON.toJSONString(pushMsg);
     }
