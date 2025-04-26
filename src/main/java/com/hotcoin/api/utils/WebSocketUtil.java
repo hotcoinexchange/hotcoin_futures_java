@@ -24,7 +24,7 @@ public class WebSocketUtil {
     /** 定时任务处理心跳 */
     private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     /** 心跳间隔（seconds） */
-    private static final int HEARTBEAT_INTERVAL = 2;
+    private static final int HEARTBEAT_INTERVAL = 30;
     private static Long connectTime = 0l;
     /**
      * web连接
