@@ -38,7 +38,7 @@ public class AdminOrderExample {
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-//        WebSocketUtil.webConnect(HotcoinApiUrls.TEST_URL, paramsGenerate(), PrivateApiConfig.QUANT_KEY, false);
-        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), PrivateApiConfig.POR_QUANT_KEY, false);
+        WebSocketUtil.webConnect(HotcoinApiUrls.TEST_URL, paramsGenerate(), PrivateApiConfig.QUANT_KEY, false);
+//        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), PrivateApiConfig.POR_QUANT_KEY, false);
     }
 }

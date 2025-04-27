@@ -19,10 +19,12 @@ import java.util.Map;
 public class AdminPositionExample {
 
     /**
+     *
      * 请求参数制造方法
      */
     static String paramsGenerate() {
         Map<String, Object> pushMsg = new HashMap<>();
+
         /** 请求类型 */
         pushMsg.put("event", "subscribe");
         Map<String, Object> params = new HashMap<>();
@@ -31,14 +33,14 @@ public class AdminPositionExample {
         /** 是否序列化 */
         params.put("serialize", false);
         /** 订阅项 */
-        params.put("type", "admin_position");
+        params.put("type", "admin_position_simple");
         pushMsg.put("params", params);
         return JSON.toJSONString(pushMsg);
     }
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-//        WebSocketUtil.webConnect(HotcoinApiUrls.TEST_URL, paramsGenerate(), PrivateApiConfig.QUANT_KEY, false);
-        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), PrivateApiConfig.POR_QUANT_KEY, false);
+        WebSocketUtil.webConnect(HotcoinApiUrls.TEST_URL, paramsGenerate(), PrivateApiConfig.QUANT_KEY, false);
+//        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), PrivateApiConfig.POR_QUANT_KEY, false);
     }
 }
