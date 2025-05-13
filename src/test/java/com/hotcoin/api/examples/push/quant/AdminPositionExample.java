@@ -34,13 +34,14 @@ public class AdminPositionExample {
         params.put("serialize", false);
         /** 订阅项 */
         params.put("type", "admin_position_simple");
+
         pushMsg.put("params", params);
         return JSON.toJSONString(pushMsg);
     }
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(HotcoinApiUrls.TEST_URL, paramsGenerate(), PrivateApiConfig.QUANT_KEY, false);
-//        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), PrivateApiConfig.POR_QUANT_KEY, false);
+//        WebSocketUtil.webConnect(HotcoinApiUrls.TEST_URL, paramsGenerate(), PrivateApiConfig.QUANT_KEY, false);
+        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), PrivateApiConfig.POR_QUANT_KEY, false);
     }
 }
