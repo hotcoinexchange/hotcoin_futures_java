@@ -24,13 +24,13 @@ public class APIConfiguration {
      * Access Key
      * {@link com.hotcoin.api.constant.PrivateApiConfig}
      */
-    private String accessKey = PrivateApiConfig.HUGH_KEY;
+    private String accessKey = PrivateApiConfig.YOUR_KEY;
 
     /**
      * Secret Key
      * {@link com.hotcoin.api.constant.PrivateApiConfig}
      */
-    private String secretKey = PrivateApiConfig.HUGH_SECRET_KEY;
+    private String secretKey = PrivateApiConfig.YOUR_SECRET_KEY;
 
     /**
      * Rest api endpoint url
@@ -59,9 +59,9 @@ public class APIConfiguration {
     private I18nEnum i18n = I18nEnum.EN_US;
 
     public APIConfiguration(String accessKey, String secretKey, String endpoint) {
-        if (accessKey.equalsIgnoreCase(PrivateApiConfig.HUGH_KEY)){
-            this.accessKey = PrivateApiConfig.HUGH_KEY;
-            this.secretKey = PrivateApiConfig.HUGH_SECRET_KEY;
+        if (accessKey.equalsIgnoreCase(PrivateApiConfig.YOUR_KEY)){
+            this.accessKey = PrivateApiConfig.YOUR_KEY;
+            this.secretKey = PrivateApiConfig.YOUR_SECRET_KEY;
         }
         if (accessKey.equalsIgnoreCase(PrivateApiConfig.QUANT_KEY)){
             this.accessKey = PrivateApiConfig.QUANT_KEY;

@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * 我的资产D
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/16
  */
 public class AssetsExample {
@@ -25,7 +25,7 @@ public class AssetsExample {
 
 
         String uri = MessageFormat.format(uriTemplate, "BTCUSDT");
-        String result = HttpUtil.get(GlobalConfigEnum.HUGH, uri, pathParam);
+        String result = HttpUtil.get(GlobalConfigEnum.YOUR, uri, pathParam);
         System.out.println(result);
     }
 }

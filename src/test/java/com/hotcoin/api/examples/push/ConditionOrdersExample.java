@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * 条件订单
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/12
  */
 public class ConditionOrdersExample {
@@ -36,6 +36,6 @@ public class ConditionOrdersExample {
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(HotcoinApiUrls.TEST_URL, paramsGenerate(), PrivateApiConfig.HUGH_KEY, true);
+        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), PrivateApiConfig.YOUR_KEY, true);
     }
 }

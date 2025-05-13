@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * 合约指数价格,标记价格和资金费率
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/12
  */
 @Slf4j
@@ -37,25 +37,18 @@ public class FundRateExample {
         return JSON.toJSONString(pushMsg);
     }
 
-//    public static void main(String[] args) throws InterruptedException {
-//        /** 秘钥 */
-//        PrivateApiConfig.ACCESS_KEY = "77827653e2b347fab36bfa69f2893dfb";
-//        PrivateApiConfig.SECRET_KEY = "058B4DECEFEF68EA59BBF132617627B2";
-//        WebSocketUtil.webConnect(url, paramsGenerate(), false, true);
-//    }
-
     public static void main(String[] args) throws InterruptedException {
         for(int i=0; i<100000 ;i++) {
             String custcodeList[] = {"BTCUSDT", "BCHUSDT", "SOLUSDT", "LTCUSDT", "ETCUSDT", "ZRXUSDT", "ETHUSDT", "DOGEUSDT", "DASHUSDT", "FILUSDT"};
             for (String custcode : custcodeList) {
                 String ticker = "{\"event\":\"subscribe\",\"params\":{\"serialize\":false,\"biz\":\"perpetual\",\"type\":\"ticker\",\"contractCode\":\"" + custcode + "\"}}";
-                WebSocketUtil.webPressureConnect(HotcoinApiUrls.TEST_URL, ticker, false);
+                WebSocketUtil.webPressureConnect(HotcoinApiUrls.PRO_URL, ticker, false);
                 String candles = "{\"event\":\"subscribe\",\"params\":{\"serialize\":false,\"biz\":\"perpetual\",\"granularity\":\"1min\",\"type\":\"candles\",\"contractCode\":\"" + custcode + "\"}}";
-                WebSocketUtil.webPressureConnect(HotcoinApiUrls.TEST_URL, candles, false);
+                WebSocketUtil.webPressureConnect(HotcoinApiUrls.PRO_URL, candles, false);
                 String fundRate = "{\"event\":\"subscribe\",\"params\":{\"serialize\":false,\"biz\":\"perpetual\",\"type\":\"fund_rate\",\"contractCode\":\"" + custcode + "\"}}";
-                WebSocketUtil.webPressureConnect(HotcoinApiUrls.TEST_URL, fundRate, false);
+                WebSocketUtil.webPressureConnect(HotcoinApiUrls.PRO_URL, fundRate, false);
                 String depth = "{\"event\":\"subscribe\",\"params\":{\"serialize\":false,\"biz\":\"perpetual\",\"type\":\"depth\",\"contractCode\":\"" + custcode + "\"}}";
-                WebSocketUtil.webPressureConnect(HotcoinApiUrls.TEST_URL, depth, false);
+                WebSocketUtil.webPressureConnect(HotcoinApiUrls.PRO_URL, depth, false);
             }
             Thread.sleep(50);
         }

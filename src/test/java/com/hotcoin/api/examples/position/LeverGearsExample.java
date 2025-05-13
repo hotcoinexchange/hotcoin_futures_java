@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * 获取所有档位对应的保证金率和杠杆D
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/16
  */
 public class LeverGearsExample {
@@ -24,7 +24,7 @@ public class LeverGearsExample {
         Map<String, String> pathParam = new HashMap<>();
         /** 路径参数：合约code */
         String uri = MessageFormat.format(uriTemplate, "BTCUSDT");
-        String result = HttpUtil.get(GlobalConfigEnum.HUGH, uri, pathParam);
+        String result = HttpUtil.get(GlobalConfigEnum.YOUR, uri, pathParam);
         System.out.println(result);
     }
 }

@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * 资产列表D
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/16
  */
 public class AssetsListExample {
@@ -24,7 +24,7 @@ public class AssetsListExample {
 
         /** 路径参数：合约code */
         String uri = uriTemplate;
-        String result = HttpUtil.get(GlobalConfigEnum.HUGH, uri, pathParam);
+        String result = HttpUtil.get(GlobalConfigEnum.YOUR, uri, pathParam);
         System.out.println(result);
     }
 }

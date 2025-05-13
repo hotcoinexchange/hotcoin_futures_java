@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * 条件单下单D
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/16
  */
 public class ConditionalOrderExample {
@@ -41,7 +41,7 @@ public class ConditionalOrderExample {
 
         /** 路径参数：合约code */
         String uri = MessageFormat.format(uriTemplate, "BTCUSDT");
-        String result = HttpUtil.post(GlobalConfigEnum.HUGH, uri, pathParam, pathParam);
+        String result = HttpUtil.post(GlobalConfigEnum.YOUR, uri, pathParam, pathParam);
         System.out.println(result);
     }
 }

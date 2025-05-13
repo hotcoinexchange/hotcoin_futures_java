@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * 撤单D
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/16
  */
 public class DeleteOrderExample {
@@ -25,7 +25,7 @@ public class DeleteOrderExample {
 
         /** 路径参数：合约code,订单id */
         String uri = MessageFormat.format(uriTemplate, "BTCUSDT", "3253898960830720");
-        String result = HttpUtil.del(GlobalConfigEnum.HUGH, uri, pathParam, new HashMap<>());
+        String result = HttpUtil.del(GlobalConfigEnum.YOUR, uri, pathParam, new HashMap<>());
         System.out.println(result);
     }
 }

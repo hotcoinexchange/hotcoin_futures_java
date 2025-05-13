@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * 所有合约指数价格,标记价格和资金费率
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/12
  */
 public class FundRatesExample {
@@ -36,7 +36,7 @@ public class FundRatesExample {
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(HotcoinApiUrls.TEST_URL, paramsGenerate(), PrivateApiConfig.HUGH_KEY, true);
+        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), PrivateApiConfig.YOUR_KEY, true);
     }
 
 }

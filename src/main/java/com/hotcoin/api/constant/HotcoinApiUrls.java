@@ -16,16 +16,9 @@ public interface HotcoinApiUrls {
      */
     String SPOT_REST_URL = "https://hkdevapi.hotcx.com";
 
+
     /**
-     * spot websocket api url
-     * 现货WebSocket Api域名地址
+     * 合约的域名
      */
-    String SPOT_WS_URL = "wss://wss.hotcoinfin.com/trade/multiple";
-
-
-    String TEST_URL = "wss://test-perpetual-wss.hotcx.com";
-
-    String DEV_URL = "wss://dev-perpetual-wss.hotcx.com";
-
     String PRO_URL = "wss://wss-ct.hotcoin.fit";
 }

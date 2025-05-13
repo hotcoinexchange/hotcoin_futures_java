@@ -8,7 +8,7 @@ import java.net.URI;
 /**
  * WebSocketClient
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/10
  */
 public class HotcoinWebSocketClient extends WebSocketClient {

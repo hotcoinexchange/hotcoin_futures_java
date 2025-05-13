@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * 成交记录D
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/16
  */
 public class DealRecordExample {
@@ -36,7 +36,7 @@ public class DealRecordExample {
         /** 结束id */
         pathParam.put("endId", "10000000");
         String uri = uriTemplate;
-        String result = HttpUtil.get(GlobalConfigEnum.HUGH, uri, pathParam);
+        String result = HttpUtil.get(GlobalConfigEnum.YOUR, uri, pathParam);
         System.out.println(result);
     }
 }

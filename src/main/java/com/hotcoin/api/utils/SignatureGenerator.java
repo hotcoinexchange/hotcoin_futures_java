@@ -125,7 +125,7 @@ public class SignatureGenerator {
                 tempParams.append("=");
                 tempParams.append(URLEncoder.encode(entry.getValue(), StandardCharsets.UTF_8.toString()));
             }
-            String secretKey = PrivateApiConfig.HUGH_SECRET_KEY;
+            String secretKey = PrivateApiConfig.YOUR_SECRET_KEY;
             if(accessKey.equalsIgnoreCase(PrivateApiConfig.QUANT_KEY)){
                 secretKey = PrivateApiConfig.QUANT_SECRET_KEY;
             }

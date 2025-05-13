@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * 深度
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/10
  */
 @Slf4j
@@ -40,7 +40,7 @@ public class PositionExample {
 
         log.error(paramsGenerate());
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(HotcoinApiUrls.TEST_URL, paramsGenerate(), PrivateApiConfig.HUGH_KEY, false);
+        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), PrivateApiConfig.YOUR_KEY, false);
     }
 
 }

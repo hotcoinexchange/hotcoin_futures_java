@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * 修改保证金D
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/16
  */
 public class PositionMarginExample {
@@ -28,7 +28,7 @@ public class PositionMarginExample {
         bodyParam.put("side", "long");
         /** 路径参数：合约code */
         String uri = MessageFormat.format(uriTemplate, "BTCUSDT");
-        String result = HttpUtil.post(GlobalConfigEnum.HUGH, uri, new HashMap<>(), bodyParam);
+        String result = HttpUtil.post(GlobalConfigEnum.YOUR, uri, new HashMap<>(), bodyParam);
         System.out.println(result);
     }
 }

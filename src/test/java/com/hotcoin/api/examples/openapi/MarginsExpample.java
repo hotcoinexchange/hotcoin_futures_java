@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * 保证金账户查询
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/5/11
  */
 public class MarginsExpample {

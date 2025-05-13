@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * 多个行情
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/10
  */
 public class TickersExample {
@@ -39,6 +39,6 @@ public class TickersExample {
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(HotcoinApiUrls.TEST_URL, paramsGenerate(), null, true);
+        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), null, true);
     }
 }

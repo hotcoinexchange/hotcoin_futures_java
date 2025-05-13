@@ -9,7 +9,7 @@ import java.util.HashMap;
 /**
  * 批量撤单D
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/16
  */
 public class BatchDeleteOrderExample {
@@ -23,7 +23,7 @@ public class BatchDeleteOrderExample {
 
         /** 路径参数：合约code */
         String uri = MessageFormat.format(uriTemplate, "BTCUSDT");
-        String result = HttpUtil.del(GlobalConfigEnum.HUGH, uri, new HashMap<>(), null);
+        String result = HttpUtil.del(GlobalConfigEnum.YOUR, uri, new HashMap<>(), null);
         System.out.println(result);
     }
 }

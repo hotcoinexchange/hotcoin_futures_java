@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * WebSocket工具类
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/10
  */
 public class WebSocketUtil {
@@ -167,8 +167,8 @@ public class WebSocketUtil {
                 public void onOpen(ServerHandshake handShakeData) {
                     System.out.println("Connected to server");
                     if(loginIn){
-                        System.out.println("login message: " + loginGenerate(PrivateApiConfig.HUGH_KEY));
-                        send(loginGenerate(PrivateApiConfig.HUGH_KEY));
+                        System.out.println("login message: " + loginGenerate(PrivateApiConfig.YOUR_KEY));
+                        send(loginGenerate(PrivateApiConfig.YOUR_KEY));
                     }
                     close();
                 }

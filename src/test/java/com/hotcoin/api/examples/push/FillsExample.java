@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * 最新成交
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/10
  */
 public class FillsExample {
@@ -37,6 +37,6 @@ public class FillsExample {
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(HotcoinApiUrls.TEST_URL, paramsGenerate(), null, true);
+        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), null, true);
     }
 }

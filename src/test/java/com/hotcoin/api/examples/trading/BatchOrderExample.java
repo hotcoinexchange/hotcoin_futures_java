@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * 批量下单D
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/16
  */
 public class BatchOrderExample {
@@ -60,7 +60,7 @@ public class BatchOrderExample {
 
         /** 路径参数：合约code */
         String uri = MessageFormat.format(uriTemplate, "BTCUSDT");
-        String result = HttpUtil.post(GlobalConfigEnum.HUGH, uri, new HashMap(), pathParam);
+        String result = HttpUtil.post(GlobalConfigEnum.YOUR, uri, new HashMap(), pathParam);
         System.out.println(result);
     }
 }

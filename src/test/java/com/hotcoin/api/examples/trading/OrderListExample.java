@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * 订单列表D
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/16
  */
 public class OrderListExample {
@@ -25,7 +25,7 @@ public class OrderListExample {
 
         /** 路径参数：合约code */
         String uri = MessageFormat.format(uriTemplate, "BTCUSDT");
-        String result = HttpUtil.get(GlobalConfigEnum.HUGH, uri, pathParam);
+        String result = HttpUtil.get(GlobalConfigEnum.YOUR, uri, pathParam);
         System.out.println(result);
     }
 }

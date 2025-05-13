@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * 设置自动追加保证金D
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/16
  */
 public class PositionSettingExample {
@@ -25,7 +25,7 @@ public class PositionSettingExample {
         bodyParam.put("value", "1");
         /** 路径参数：合约code */
         String uri = MessageFormat.format(uriTemplate, "BTCUSDT");
-        String result = HttpUtil.post(GlobalConfigEnum.HUGH, uri, bodyParam, bodyParam);
+        String result = HttpUtil.post(GlobalConfigEnum.YOUR, uri, bodyParam, bodyParam);
         System.out.println(result);
     }
 }

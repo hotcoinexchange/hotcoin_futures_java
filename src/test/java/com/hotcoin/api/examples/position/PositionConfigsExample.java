@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * 仓位和限额设置D
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/16
  */
 public class PositionConfigsExample {
@@ -24,7 +24,7 @@ public class PositionConfigsExample {
         Map<String, String> pathParam = new HashMap<>();
         /** 路径参数：合约code */
         String uri = MessageFormat.format(uriTemplate, "BTCUSDT");
-        String result = HttpUtil.get(GlobalConfigEnum.HUGH, uri, pathParam);
+        String result = HttpUtil.get(GlobalConfigEnum.YOUR, uri, pathParam);
         System.out.println(result);
     }
 }

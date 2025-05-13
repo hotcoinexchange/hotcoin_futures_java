@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 根据订单号批量撤单D
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/16
  */
 public class BatchDeleteOrderByIdExample {
@@ -27,7 +27,7 @@ public class BatchDeleteOrderByIdExample {
 
         /** 路径参数：合约code */
         String uri = MessageFormat.format(uriTemplate, "BTCUSDT");
-        String result = HttpUtil.del(GlobalConfigEnum.HUGH, uri, new HashMap<>(), ids);
+        String result = HttpUtil.del(GlobalConfigEnum.YOUR, uri, new HashMap<>(), ids);
         System.out.println(result);
     }
 }

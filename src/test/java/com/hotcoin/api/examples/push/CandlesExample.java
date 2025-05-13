@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * newex_push项目 k线:candles
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/10
  */
 @Slf4j
@@ -41,6 +41,6 @@ public class CandlesExample {
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(HotcoinApiUrls.TEST_URL, paramsGenerate(), null, true);
+        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), null, true);
     }
 }

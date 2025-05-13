@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * 单个行情
  *
- * @author zenghaihui
+ * @author hugh
  * @date 2024/4/10
  */
 @Slf4j
@@ -38,7 +38,6 @@ public class AdminOrderExample {
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-//        WebSocketUtil.webConnect(HotcoinApiUrls.TEST_URL, paramsGenerate(), PrivateApiConfig.QUANT_KEY, false);
         WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), PrivateApiConfig.POR_QUANT_KEY, false);
     }
 }
