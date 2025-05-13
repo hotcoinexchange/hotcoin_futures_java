@@ -15,13 +15,14 @@ package com.hotcoin.api.constant;
 public class PrivateApiConfig {
 
     /**
-     * 你的 Access Key
+     * 您的 Access Key
+     * 请改为您申请的Access Key
      */
     public static String YOUR_KEY = "77827653e2b347fab36bfa69f2893dfb";
 
     /**
-     * 你的 Secret Key
-     * 申请的API Key中的 Secret Key
+     * 您的 Secret Key
+     * 请改为您申请的Secret Key
      */
     public static String YOUR_SECRET_KEY = "058B4DECEFEF68EA59BBF132617627B2";
 
