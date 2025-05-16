@@ -1,6 +1,0 @@
-2024-11-22 12:12:34.320 [main] ERROR com.hotcoin.api.examples.push.FundRateExample-{"event":"subscribe","params":{"serialize":false,"biz":"perpetual","type":"fund_rate","contractCode":"BTCUSDT"}}
-2024-11-22 12:16:39.529 [main] ERROR com.hotcoin.api.examples.push.TickerExample-{"event":"subscribe","params":{"serialize":false,"biz":"perpetual","type":"ticker","contractCode":"etcusdt"}}
-2024-11-22 12:20:15.684 [main] ERROR com.hotcoin.api.examples.push.CandlesExample-{"event":"subscribe","params":{"serialize":false,"biz":"perpetual","granularity":"1min","type":"candles","contractCode":"btcusdt"}}
-2024-11-22 12:21:06.382 [main] ERROR com.hotcoin.api.examples.push.DepthExample-{"event":"subscribe","params":{"serialize":false,"biz":"perpetual","granularity":"1","type":"depth","contractCode":"BTCUSDT"}}
-2024-11-22 12:21:38.493 [main] ERROR com.hotcoin.api.examples.push.DepthExample-{"event":"subscribe","params":{"serialize":false,"biz":"perpetual","granularity":"1min","type":"depth","contractCode":"BTCUSDT"}}
-2024-11-22 12:21:50.608 [main] ERROR com.hotcoin.api.examples.push.DepthExample-{"event":"subscribe","params":{"serialize":false,"biz":"perpetual","type":"depth","contractCode":"BTCUSDT"}}
