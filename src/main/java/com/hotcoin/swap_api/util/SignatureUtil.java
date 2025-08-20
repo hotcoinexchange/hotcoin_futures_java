@@ -17,6 +17,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
+ * 安全认证
+ *
  * @version V1.0
  * @description: TODO 类描述
  * @author: hotcoin
@@ -28,7 +30,14 @@ public class SignatureUtil {
     private static final ZoneId ZONE_GMT = ZoneId.of("Z");
 
     /**
+     * 需要登录的签名
      *
+     * @param pathParam
+     * @param methodEnum
+     * @param apiUri
+     * @param accessKey
+     * @param secretKey
+     * @return
      */
     public static Map<String, String> createSignature(Map<String, String> pathParam,
             HttpMethodEnum methodEnum, String apiUri, String accessKey, String secretKey) {
@@ -58,6 +67,15 @@ public class SignatureUtil {
     }
 
 
+    /**
+     * 无需登录的签名
+     *
+     * @param configEnum
+     * @param pathParam
+     * @param methodEnum
+     * @param apiUri
+     * @return
+     */
     public static Map<String, String> createSignature(GlobalConfigEnum configEnum,
             Map<String, String> pathParam, HttpMethodEnum methodEnum, String apiUri) {
         Map<String, String> paramsToSign = new HashMap<>();
