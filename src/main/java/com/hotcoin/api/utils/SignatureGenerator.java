@@ -100,10 +100,8 @@ public class SignatureGenerator {
      * 生成websocket的签名
      * @return
      */
-    public static String createWebSocketSignature(long time, String accessKey){
+    public static String createWebSocketSignature(long time, String accessKey, String secretKey){
         try {
-            APIConfiguration config= new APIConfiguration();
-
             String host = "api.ws.contract.hotcoin.top";
             String method = "WSS";
 
@@ -125,16 +123,8 @@ public class SignatureGenerator {
                 tempParams.append("=");
                 tempParams.append(URLEncoder.encode(entry.getValue(), StandardCharsets.UTF_8.toString()));
             }
-            String secretKey = PrivateApiConfig.YOUR_SECRET_KEY;
-            if(accessKey.equalsIgnoreCase(PrivateApiConfig.QUANT_KEY)){
-                secretKey = PrivateApiConfig.QUANT_SECRET_KEY;
-            }
-            if(accessKey.equalsIgnoreCase(PrivateApiConfig.POR_QUANT_KEY)){
-                secretKey = PrivateApiConfig.POR_QUANT_SECRET_KEY;
-            }
-
             //拼接字符串
-            String payload = method + "\n" + host + "\n/" + "wss" + "\n" + tempParams.toString();
+            String payload = method + "\n" + host + "\n/" + "wss" + "\n" + tempParams;
             SecretKeySpec secKey = new SecretKeySpec(secretKey.getBytes(StandardCharsets.UTF_8), HMACSHA_256);
             Mac mac = Mac.getInstance(HMACSHA_256);
             mac.init(secKey);

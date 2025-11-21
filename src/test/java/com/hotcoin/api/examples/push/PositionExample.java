@@ -40,7 +40,7 @@ public class PositionExample {
 
         log.error(paramsGenerate());
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), PrivateApiConfig.YOUR_KEY, false);
+        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), PrivateApiConfig.YOUR_KEY, PrivateApiConfig.YOUR_SECRET_KEY, false);
     }
 
 }

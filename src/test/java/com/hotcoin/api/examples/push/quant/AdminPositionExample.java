@@ -41,6 +41,6 @@ public class AdminPositionExample {
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), PrivateApiConfig.POR_QUANT_KEY, false);
+        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), PrivateApiConfig.POR_QUANT_KEY, PrivateApiConfig.YOUR_SECRET_KEY, false);
     }
 }
