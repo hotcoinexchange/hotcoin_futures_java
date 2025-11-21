@@ -36,6 +36,6 @@ public class ConditionOrdersExample {
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), PrivateApiConfig.YOUR_KEY, true);
+        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), PrivateApiConfig.YOUR_KEY, PrivateApiConfig.YOUR_SECRET_KEY, true);
     }
 }

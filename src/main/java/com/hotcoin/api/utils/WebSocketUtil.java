@@ -28,12 +28,14 @@ public class WebSocketUtil {
     private static Long connectTime = 0l;
     /**
      * web连接
-     * @param url 连接地址
-     * @param params json入参
-     * @param accessKey 是否登陆
+     *
+     * @param url          连接地址
+     * @param params       json入参
+     * @param accessKey    是否登陆
+     * @param secretKey
      * @param shortConnect 是否闪断
      */
-    public static void webConnect(String url, String params, String accessKey, boolean shortConnect){
+    public static void webConnect(String url, String params, String accessKey, String secretKey, boolean shortConnect){
         try {
             URI uri = new URI(url);
             HotcoinWebSocketClient client = new HotcoinWebSocketClient(uri){
@@ -41,10 +43,14 @@ public class WebSocketUtil {
                 @Override
                 public void onOpen(ServerHandshake handShakeData) {
                     System.out.println("Connected to server");
+
+                    /** 登录begin */
                     if(null != accessKey){
-                        System.out.println("login message: " + loginGenerate(accessKey));
-                        send(loginGenerate(accessKey));
+                        String login = loginGenerate(accessKey, secretKey);
+                        System.out.println("login message: " + login);
+                        send(login);
                     }
+                    /** 登录end */
 
                     ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
                     Runnable task = () -> {
@@ -136,7 +142,7 @@ public class WebSocketUtil {
      * 请求参数制造方法
      * @return
      */
-    static String loginGenerate(String accessKey){
+    static String loginGenerate(String accessKey, String secretKey){
         long time = System.currentTimeMillis();
         Map<String,Object> pushMsg = new LinkedHashMap<>();
         /** 请求类型 */
@@ -145,7 +151,7 @@ public class WebSocketUtil {
         /** 访问key */
         params.put("apiKey", accessKey);
         /** 签名 */
-        params.put("signature", SignatureGenerator.createWebSocketSignature(time, accessKey));
+        params.put("signature", SignatureGenerator.createWebSocketSignature(time, accessKey, secretKey));
         /** timestamp */
         params.put("timestamp",time);
         pushMsg.put("params",params);
@@ -167,8 +173,9 @@ public class WebSocketUtil {
                 public void onOpen(ServerHandshake handShakeData) {
                     System.out.println("Connected to server");
                     if(loginIn){
-                        System.out.println("login message: " + loginGenerate(PrivateApiConfig.YOUR_KEY));
-                        send(loginGenerate(PrivateApiConfig.YOUR_KEY));
+                        String login = loginGenerate(PrivateApiConfig.YOUR_KEY, PrivateApiConfig.YOUR_SECRET_KEY);
+                        System.out.println("login message: " + login);
+                        send(login);
                     }
                     close();
                 }

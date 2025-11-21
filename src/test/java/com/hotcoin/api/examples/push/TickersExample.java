@@ -2,6 +2,7 @@ package com.hotcoin.api.examples.push;
 
 import com.alibaba.fastjson.JSON;
 import com.hotcoin.api.constant.HotcoinApiUrls;
+import com.hotcoin.api.constant.PrivateApiConfig;
 import com.hotcoin.api.utils.WebSocketUtil;
 
 import java.util.HashMap;
@@ -39,6 +40,6 @@ public class TickersExample {
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), null, true);
+        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), null, null, true);
     }
 }

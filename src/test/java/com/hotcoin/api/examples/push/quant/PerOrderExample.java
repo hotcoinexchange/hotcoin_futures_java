@@ -40,6 +40,6 @@ public class PerOrderExample {
 
     public static void main(String[] args) {
         /** 调用远程WebSocket */
-        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), PrivateApiConfig.QUANT_KEY, true);
+        WebSocketUtil.webConnect(HotcoinApiUrls.PRO_URL, paramsGenerate(), PrivateApiConfig.QUANT_KEY, PrivateApiConfig.YOUR_SECRET_KEY, true);
     }
 }
