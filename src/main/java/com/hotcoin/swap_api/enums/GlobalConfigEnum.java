@@ -17,8 +17,17 @@ public enum GlobalConfigEnum {
             "https://binn.adffhttct.com", "HmacSHA256");
 
 
+    /**
+     * 您申请的ACCESS_KEY
+     */
     final String ACCESS_KEY;
+    /**
+     * 您申请的SECRET_KEY
+     */
     final String SECRET_KEY;
+    /**
+     * 平台的接口地址
+     */
     final String HOST;
     final String algorithm;
 
