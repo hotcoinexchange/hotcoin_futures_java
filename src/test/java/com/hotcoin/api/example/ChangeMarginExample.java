@@ -32,7 +32,7 @@ public class ChangeMarginExample {
         pathParam.put("side", "long");
         pathParam.put("margin", "10");
         String uri = "/api/v1/perpetual/position/bchusdt/change-margin";
-        String result = HttpUtil.post(GlobalConfigEnum.TEST, uri, pathParam, pathParam);
+        String result = HttpUtil.post(GlobalConfigEnum.YOUR, uri, pathParam, pathParam);
         System.out.println(result);
     }
 

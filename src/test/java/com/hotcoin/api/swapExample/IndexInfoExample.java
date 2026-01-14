@@ -18,7 +18,7 @@ import java.util.HashMap;
 public class IndexInfoExample {
     public static void main(String[] args) {
         String uri = "/api/v1/perpetual/public/btcusdt/indexInfo";
-        String result = HttpUtil.get(GlobalConfigEnum.TEST, uri, new HashMap<>());
+        String result = HttpUtil.get(GlobalConfigEnum.YOUR, uri, new HashMap<>());
         Result<IndexInfo> indexInfoResult = JSONObject.parseObject(result, new TypeReference<Result<IndexInfo>>() {
         });
         System.out.println(indexInfoResult);

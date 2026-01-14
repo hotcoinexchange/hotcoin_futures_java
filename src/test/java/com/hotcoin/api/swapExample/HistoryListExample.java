@@ -23,7 +23,7 @@ public class HistoryListExample {
         Map<String, String> params = new HashMap<>();
         String contractCode = "bchusdt";
         String uri = MessageFormat.format("/api/v1/perpetual/products/{0}/history-list", contractCode);
-        String result = HttpUtil.get(GlobalConfigEnum.TEST, uri, params);
+        String result = HttpUtil.get(GlobalConfigEnum.YOUR, uri, params);
         Result<PageData<OrderBook>> pageDataResult = JSONObject.parseObject(result, new TypeReference<Result<PageData<OrderBook>>>() {
         });
         pageDataResult.getData().getRows().forEach(System.out::println);

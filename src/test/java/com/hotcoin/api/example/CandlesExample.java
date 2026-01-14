@@ -34,7 +34,7 @@ public class CandlesExample {
         pathParam.put("size", "1000");
         pathParam.put("klineType", "2");
         String uri = "/api/v1/perpetual/public/etcusdt/candles";
-        String result = HttpUtil.get(GlobalConfigEnum.TEST, uri, pathParam);
+        String result = HttpUtil.get(GlobalConfigEnum.YOUR, uri, pathParam);
         Result<Object[]> indexInfoResult = JSONObject.parseObject(result, new TypeReference<Result<Object[]>>() {
         });
         Object[] data = indexInfoResult.getData();
