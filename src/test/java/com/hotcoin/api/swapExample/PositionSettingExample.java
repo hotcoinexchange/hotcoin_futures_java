@@ -19,7 +19,7 @@ public class PositionSettingExample {
         params.put("value", "0");
         String contractCode = "btcusdt";
         String uri = MessageFormat.format("/api/v1/perpetual/position/{0}/setting", contractCode);
-        String post = HttpUtil.post(GlobalConfigEnum.TEST, uri, params, params);
+        String post = HttpUtil.post(GlobalConfigEnum.YOUR, uri, params, params);
         System.out.println(post);
     }
 }

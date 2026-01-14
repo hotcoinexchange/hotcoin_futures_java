@@ -25,7 +25,7 @@ public class OrderDetailExample {
         params.put("orderId", "138427205741776");
         String contractCode = "bchusdt";
         String uri = MessageFormat.format("/api/v1/perpetual/products/{0}/orderDetail", contractCode);
-        String result = HttpUtil.get(GlobalConfigEnum.TEST, uri, params);
+        String result = HttpUtil.get(GlobalConfigEnum.YOUR, uri, params);
         Result<OrderDetail> detailResult = JSONObject.parseObject(result, new TypeReference<Result<OrderDetail>>() {
         });
         System.out.println(detailResult.getData());

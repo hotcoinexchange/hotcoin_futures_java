@@ -23,7 +23,7 @@ public class FillsExample {
         Map<String, String> params = new HashMap<>();
         String contractCode = "btcusdt";
         String uri = MessageFormat.format("/api/v1/perpetual/public/{0}/fills", contractCode);
-        String result = HttpUtil.get(GlobalConfigEnum.TEST, uri, params);
+        String result = HttpUtil.get(GlobalConfigEnum.YOUR, uri, params);
         Result<Object[]> fillResult = JSONObject.parseObject(result, new TypeReference<Result<Object[]>>() {
         });
         Object[] data = fillResult.getData();

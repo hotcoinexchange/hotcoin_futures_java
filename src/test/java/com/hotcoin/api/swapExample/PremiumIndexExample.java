@@ -23,7 +23,7 @@ public class PremiumIndexExample {
         Map<String, String> params = Collections.emptyMap();
         String contractCode = "btcusdt";
         String uri = MessageFormat.format("/api/v1/perpetual/public/{0}/premiumIndex", contractCode);
-        String result = HttpUtil.get(GlobalConfigEnum.TEST, uri, params);
+        String result = HttpUtil.get(GlobalConfigEnum.YOUR, uri, params);
         Result<PremiumIndex> premiumIndexResult = JSONObject.parseObject(result, new TypeReference<Result<PremiumIndex>>() {
         });
         System.out.println(premiumIndexResult.getData());

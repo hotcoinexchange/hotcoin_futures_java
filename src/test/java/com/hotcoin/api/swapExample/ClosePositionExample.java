@@ -20,7 +20,7 @@ public class ClosePositionExample {
         String contractCode = "bchusdt";
         String side = "long";
         String uri = MessageFormat.format("/api/v1/perpetual/products/{0}/{1}/closePosition", contractCode, side);
-        String post = HttpUtil.post(GlobalConfigEnum.TEST, uri, params, params);
+        String post = HttpUtil.post(GlobalConfigEnum.YOUR, uri, params, params);
         System.out.println(post);
     }
 }
