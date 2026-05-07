@@ -4,31 +4,52 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
+ * 全局 API 配置枚举（保存 AccessKey、SecretKey、Host 和签名算法）
+ * Global API configuration enum holding access key, secret key, host and signing algorithm.
+ *
+ * <p>使用前请将 YOUR_ACCESS_KEY 和 YOUR_SECRET_KEY 替换为您在 Hotcoin 平台申请的真实密钥。
+ * Before use, replace YOUR_ACCESS_KEY and YOUR_SECRET_KEY with the real credentials
+ * obtained from the Hotcoin platform.</p>
+ *
+ * <p>安全提示 / Security notice: 请勿将真实密钥提交到版本控制系统。
+ * Never commit real API credentials to version control.</p>
+ *
  * @version V1.0
- * @description: TODO 类描述
- * @author: hotcoin
- * @date: 2022/4/15
- **/
+ * @author hotcoin
+ * @date 2022/4/15
+ */
 @Getter
 @AllArgsConstructor
 public enum GlobalConfigEnum {
 
-    YOUR("77827653e2b347fab36bfa69f2893dfb", "058B4DECEFEF68EA59BBF132617627B2",
-            "https://binn.adffhttct.com", "HmacSHA256");
-
+    /**
+     * 默认配置项，请替换为您的真实密钥和 Host
+     * Default configuration entry — replace with your real keys and host.
+     */
+    YOUR("YOUR_ACCESS_KEY", "YOUR_SECRET_KEY",
+            "https://api-ct.hotcoin.fit", "HmacSHA256");
 
     /**
-     * 您申请的ACCESS_KEY
+     * 您在 Hotcoin 平台申请的 Access Key（访问密钥）
+     * Access key obtained from the Hotcoin platform (identifies your account).
      */
     final String ACCESS_KEY;
+
     /**
-     * 您申请的SECRET_KEY
+     * 您在 Hotcoin 平台申请的 Secret Key（签名密钥，请妥善保管）
+     * Secret key obtained from the Hotcoin platform (used for HMAC signing — keep it private).
      */
     final String SECRET_KEY;
+
     /**
-     * 平台的接口地址
+     * Hotcoin 永续合约 REST API 的 Host 地址
+     * Host address for the Hotcoin Perpetual Futures REST API.
      */
     final String HOST;
-    final String algorithm;
 
+    /**
+     * 签名算法名称，固定为 HmacSHA256
+     * Signing algorithm name, always HmacSHA256.
+     */
+    final String algorithm;
 }
