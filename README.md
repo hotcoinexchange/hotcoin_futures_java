@@ -1,3 +1,5 @@
+**[中文](README_CN.md) | English**
+
 # Hotcoin Futures Java SDK
 
 Java example code for the Hotcoin Perpetual Futures REST and WebSocket APIs, covering market data, assets, trading, positions, and real-time push subscriptions.
